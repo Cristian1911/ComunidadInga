@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">    
+    <title>WASKA</title>
+</head>
+<body>
+    <div class="button" id="btn_login">
+        <h2>Iniciar sesión</h2>
+    </div>
+    <div class="button" id="btn_registro">
+        <h2>Registrarse</h2>
+    </div>
+</body>
+
+<!-- Firebase Configuration -->
+
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+            
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.4.1/firebase-app.js"></script>
+            
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.4.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.4.1/firebase-firestore.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+        apiKey: "AIzaSyAeZlUvp031fr3LC2bL9jjdl-0JMWqjNX4",
+        authDomain: "waska-256002.firebaseapp.com",
+        databaseURL: "https://waska-256002.firebaseio.com",
+        projectId: "waska-256002",
+        storageBucket: "waska-256002.appspot.com",
+        messagingSenderId: "83219536059",
+        appId: "1:83219536059:web:715b3444d02e298909b19e"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+</html>

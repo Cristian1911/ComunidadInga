@@ -1,0 +1,7 @@
+1) Get a Google API Key & Client ID by following the steps from : http://usefulangle.com/post/55/google-login-javascript-api
+
+2) Add your Google API Key & Client ID in lines 85 & 86 (replace xxxxxxxxxxxxxxxxxxxxxx)
+
+3) Run the html file
+
+Last updated at : 01-10-2017
