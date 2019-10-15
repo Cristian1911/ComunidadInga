@@ -9,11 +9,8 @@
     <title>WASKA</title>
 </head>
 <body>
-    <div class="button" id="btn_login">
+    <div class="button" onclick="auth()" id="btn_login">
         <h2>Iniciar sesión</h2>
-    </div>
-    <div class="button" id="btn_registro">
-        <h2>Registrarse</h2>
     </div>
 </body>
 
@@ -41,5 +38,12 @@
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
+
+        function auth() {
+            var provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithRedirect(provider);
+            console.log("You're in");
+        }
+        
     </script>
 </html>
