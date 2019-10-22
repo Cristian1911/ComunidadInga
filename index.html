@@ -10,7 +10,11 @@
 </head>
 <body>
     <section id="Login" class="none">
-
+        <button id="btnIniciar" onclick="desplegarLogin()">Iniciar Sesion</button>
+        <button id="btnLRegistro" onclick="cambiodepantalla('Login','Registro');"> Registro</button>
+        <input id="Lusername" type="text" class="none" placeholder="Nombre de usuario">
+        <input id="Lpassword" type="text" class="none" placeholder="Contraseña">
+        <button id="btnLogin" onclick="login()" class="none">Login</button>
     </section>
 
     <section id="Registro">
