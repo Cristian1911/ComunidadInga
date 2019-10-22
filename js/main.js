@@ -57,6 +57,16 @@ function Registro(){
 }
 
 function cambiodepantalla(screen1, screen2){
-
+    document.getElementById(screen1).classList.add("none");
+    document.getElementById(screen2).classList.remove("none");
 }
+
+function desplegarLogin(){
+    document.getElementById('btnLRegistro').classList.toggle("none");
+    document.getElementById('Lusername').classList.toggle("none");
+    document.getElementById('Lpassword').classList.toggle("none");
+    document.getElementById('btnLogin').classList.toggle("none");
+    
+}
+
 
