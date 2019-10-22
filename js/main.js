@@ -1,38 +1,17 @@
-/*window.onload = init;
+window.onload = init;
 
 function init(){
-    //Authentication with google
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            // User is signed in.
-            firebase.firestore().collection("form").doc(firebase.auth().currentUser.uid).get().then(function(doc) {
-                //Checking if the uid exist in the collection form of the db
-                if (doc.exists) {
-                    console.log("Estaj dentro, pinshi pendejo");
-                } else {
-                    // doc.data() will be undefined in this case
-                    console.log("No such document!");
-                }
-
-                console.log(firebase.auth().currentUser.displayName);
-                console.log(firebase.auth().currentUser.email);
-            }).catch(function(error) {
-                console.log("Error getting document:", error);
-            });
-        } else {
-            // No user is signed in.
-            console.log("Not logged in");
-            var signButton = document.getElementById("btn_login");
-            signButton.addEventListener('click', ()=>{
-                auth();
-            });
-        }
-      });
+    var firebaseConfig = {
+        apiKey: "AIzaSyAeZlUvp031fr3LC2bL9jjdl-0JMWqjNX4",
+        authDomain: "waska-256002.firebaseapp.com",
+        databaseURL: "https://waska-256002.firebaseio.com",
+        projectId: "waska-256002",
+        storageBucket: "waska-256002.appspot.com",
+        messagingSenderId: "83219536059",
+        appId: "1:83219536059:web:715b3444d02e298909b19e"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      
 }
 
-
-function auth() {
-    var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithRedirect(provider);
-    console.log("You're in");
-}*/
