@@ -66,7 +66,50 @@ function desplegarLogin(){
     document.getElementById('Lusername').classList.toggle("none");
     document.getElementById('Lpassword').classList.toggle("none");
     document.getElementById('btnLogin').classList.toggle("none");
-    
+}
+
+function login(){
+   
+    var hasname;
+    var username = document.getElementById("Lusername").value.toLowerCase();
+    var password = document.getElementById("Lpassword").value.toLowerCase();
+    var ref = firebase.database().ref("Chaman"); 
+    ref.once("value")
+        .then(function(snapshot) {
+            hasname = snapshot.child(username).exists();
+            if(hasname == true){
+                var pass = snapshot.child(username+"/password").val();
+                if(pass === password){
+                    alert('eres chaman');
+                }
+                else{
+                    alert('contra chaman incorrecta');
+                }
+            }
+            else{
+                var ref1 = firebase.database().ref("Usuarios"); 
+                ref1.once("value")
+                    .then(function(snapshot) {   
+                        hasname = snapshot.child(username).exists();
+                        if(hasname == true){
+                            var pass = snapshot.child(username+"/password").val();
+                            if(pass === password){
+                                alert('eres usuario');
+                            }else{
+                                alert('contra mala de usuario');
+                            }
+                        } 
+                        else{
+                            alert('usuario y contraseña incorrecta');
+                        }
+                    });
+
+            }
+
+        
+        
+        });
+
 }
 
 
