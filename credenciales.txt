@@ -1,3 +1,0 @@
-Cliente OAuth
-secreto de cliente: h38Zs1mWvy6QiEndw5aTH3WN
-id de cliente: 83219536059-27gfobg22kfjttpjme676jvhe6p74pka.apps.googleusercontent.com

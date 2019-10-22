@@ -2,23 +2,7 @@ body{
     margin: 0%;
     background-color: #379D89;
 }
-.button{
-    margin: 15vw;
-    position: fixed;
-    width: 70vw;
-    height: 8vh;
-    text-align: center;
-    vertical-align: middle;
-    display: table-cell;
-    border-radius: 20px 20px 20px 20px;
-}
-#btn_login{
-    color: white;
-    border: 2px solid white;
-    margin-top: 60vh;
-}
-#btn_registro{
-    color: white;
-    background: #FF5733;
-    margin-top: 70vh;
+
+.none{
+    display: none;
 }

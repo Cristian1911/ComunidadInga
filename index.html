@@ -9,9 +9,21 @@
     <title>WASKA</title>
 </head>
 <body>
-    <div class="button" onclick="auth()" id="btn_login">
-        <h2>Iniciar sesión</h2>
-    </div>
+    <section id="Login" class="none">
+
+    </section>
+
+    <section id="Registro">
+        <input id="username" type="text" placeholder="Nombre de usuario">
+        <input id="password" type="text" placeholder="Contraseña">
+        <input id="name" type="text" placeholder="Nombre">
+        <input id="lastname" type="text" placeholder="Apellido">
+        <input id="cedula" type="text" placeholder="Cedula">
+        <input id="edad" type="number" placeholder="Edad">
+        <input id="correo" type="text" placeholder="Correo">
+        <button onclick="Registro()">registro</button>
+    </section>
+    
 </body>
 
 <!-- Firebase Configuration -->
@@ -19,31 +31,10 @@
     <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
             
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/6.4.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
             
     <!-- Add Firebase products that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/6.4.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.4.1/firebase-firestore.js"></script>
 
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-        apiKey: "AIzaSyAeZlUvp031fr3LC2bL9jjdl-0JMWqjNX4",
-        authDomain: "waska-256002.firebaseapp.com",
-        databaseURL: "https://waska-256002.firebaseio.com",
-        projectId: "waska-256002",
-        storageBucket: "waska-256002.appspot.com",
-        messagingSenderId: "83219536059",
-        appId: "1:83219536059:web:715b3444d02e298909b19e"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-
-        function auth() {
-            var provider = new firebase.auth.GoogleAuthProvider();
-            firebase.auth().signInWithRedirect(provider);
-            console.log("You're in");
-        }
-        
-    </script>
 </html>
