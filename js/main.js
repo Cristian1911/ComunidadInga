@@ -12,6 +12,51 @@ function init(){
       };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
-      
+
+}
+
+
+function Registro(){
+    var username = document.getElementById("username").value.toLowerCase();
+    var password = document.getElementById("password").value.toLowerCase();
+    var name = document.getElementById("name").value.toLowerCase();
+    var lastname = document.getElementById("lastname").value.toLowerCase();
+    var cedula = document.getElementById("cedula").value.toLowerCase();
+    var edad = document.getElementById("edad").value.toLowerCase();
+    var correo = document.getElementById("correo").value.toLowerCase();
+    
+    var ref = firebase.database().ref("Usuarios");
+        ref.once("value")
+        .then(function(snapshot) {
+            var hasname = snapshot.child(username).exists();
+            if(hasname == true){
+                alert('nombre de usuario en uso');
+            }
+            else{
+                var ref1 = firebase.database().ref("RegistroUser");
+                ref1.once("value")
+                .then(function(snapshot) {
+                    var hasname1 = snapshot.child(username).exists();
+                    if(hasname1 == true){
+                        alert('nombre de usuario en uso(por aprobar)');
+                    }
+                    else{
+                        ref1.child(username).set({
+                           username : username,
+                           password : password,
+                           name : name,
+                           lastname : lastname,
+                           cedula : cedula,
+                           edad : edad,
+                           correo : correo 
+                        });
+                    }
+                });
+            }
+        });
+}
+
+function cambiodepantalla(screen1, screen2){
+
 }
 

@@ -9,9 +9,21 @@
     <title>WASKA</title>
 </head>
 <body>
-    <div class="button" onclick="auth()" id="btn_login">
-        <h2>Iniciar sesión</h2>
-    </div>
+    <section id="Login" class="none">
+
+    </section>
+
+    <section id="Registro">
+        <input id="username" type="text" placeholder="Nombre de usuario">
+        <input id="password" type="text" placeholder="Contraseña">
+        <input id="name" type="text" placeholder="Nombre">
+        <input id="lastname" type="text" placeholder="Apellido">
+        <input id="cedula" type="text" placeholder="Cedula">
+        <input id="edad" type="number" placeholder="Edad">
+        <input id="correo" type="text" placeholder="Correo">
+        <button onclick="Registro()">registro</button>
+    </section>
+    
 </body>
 
 <!-- Firebase Configuration -->
@@ -21,7 +33,7 @@
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
-    
+    <script type="text/javascript" src="js/main.js"></script>
             
     <!-- Add Firebase products that you want to use -->
 
