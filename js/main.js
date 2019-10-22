@@ -81,6 +81,8 @@ function login(){
                 var pass = snapshot.child(username+"/password").val();
                 if(pass === password){
                     alert('eres chaman');
+                    cambiodepantalla('Login','ScreenChaman');
+                    printsolicitud();
                 }
                 else{
                     alert('contra chaman incorrecta');
@@ -103,13 +105,23 @@ function login(){
                             alert('usuario y contraseña incorrecta');
                         }
                     });
-
             }
-
-        
-        
         });
 
 }
 
+function printsolicitud(){
+    var query = firebase.database().ref("RegistroUser").orderByKey();
+    query.once("value")
+    .then(function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+        // key will be "ada" the first time and "alan" the second time
+        var key = childSnapshot.key;
+        // childData will be the actual contents of the child
+        var childData = childSnapshot.val();
+        document.getElementById("hola").innerHTML += "<p>"+key+"<p><br>";
+        });
+});
+
+}
 
