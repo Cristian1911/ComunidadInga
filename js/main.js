@@ -112,6 +112,7 @@ function login(){
 }
 
 function printsolicitud(){
+    document.getElementById("hola").innerHTML ="";
     var query = firebase.database().ref("RegistroUser").orderByKey();
     query.once("value")
     .then(function(snapshot) {
@@ -120,7 +121,7 @@ function printsolicitud(){
         var key = childSnapshot.key;
         // childData will be the actual contents of the child
         var childData = childSnapshot.val();
-        document.getElementById("hola").innerHTML += "<p>"+key+"<p><br>";
+        document.getElementById("hola").innerHTML += "<div class='formRegistro'>"+key+"<button onclick='showdetails(this)' id='detall."+key+"'>Detalle</button>";
         });
 });
 
@@ -129,5 +130,58 @@ function printsolicitud(){
 function toggle(id1, id2){
     document.getElementById(id1).classList.toggle("none");
     document.getElementById(id2).classList.toggle("none");
+}
+
+function showdetails(item){
+    cambiodepantalla('ScreenChaman','DetalleUsuario');
+    var campo = document.getElementById("campo");
+    var key = item.id.split(".");
+    var ref = firebase.database().ref("RegistroUser/"+key[1]);
+    ref.once("value")
+    .then(function(snapshot) {
+        campo.innerHTML = "cedula:"+snapshot.child("cedula").val()+"<br>";
+        campo.innerHTML += "correo:"+snapshot.child("correo").val()+"<br>";
+        campo.innerHTML += "edad:"+snapshot.child("edad").val()+"<br>";
+        campo.innerHTML += "name:"+snapshot.child("name").val()+"<br>";
+        campo.innerHTML += "lastname:"+snapshot.child("lastname").val()+"<br>";
+        campo.innerHTML += "password:"+snapshot.child("password").val()+"<br>";
+        campo.innerHTML += "username:"+snapshot.child("username").val()+"<br>";
+        campo.innerHTML += "<button id='acept."+key[1]+"' onclick='aceptar(this)'> Acpetar </button>";
+        campo.innerHTML += "<button id='recha."+key[1]+"' onclick='rechazar(this)'> Rechazar </button>";
+
+    });
+
+    
+}
+
+function aceptar(item){
+    var datos;
+    var ref = firebase.database().ref('RegistroUser/'+item.id.split(".")[1]);
+    ref.once('value')
+       .then(function(snapshot) {
+        datos = snapshot.val();
+       
+    var ref1 = firebase.database().ref('Usuarios/');
+    ref1.child(item.id.split(".")[1]).set({
+        username : datos.username,
+        password : datos.password,
+        name : datos.name,
+        lastname : datos.lastname,
+        cedula : datos.cedula,
+        edad : datos.edad,
+        correo : datos.correo 
+      });      
+    });
+
+    cambiodepantalla('DetalleUsuario','ScreenChaman');
+    printsolicitud();
+}
+
+function rechazar(item){
+    var ref = firebase.database().ref('RegistroUser/'+item.id.split(".")[1]);
+    ref.remove();
+    cambiodepantalla('DetalleUsuario','ScreenChaman');
+    printsolicitud();
+
 }
 
