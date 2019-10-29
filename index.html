@@ -15,21 +15,34 @@
         <div id="btnLRegistro" onclick="cambiodepantalla('Login','Registro');"></div>
         <form id="form1" action="">
             <div><input id="Lusername" type="text" class="formLogin none" placeholder="Nombre de usuario"></div>
-            <div><input id="Lpassword" type="text" class="formLogin none" placeholder="Contraseña"></div>
+            <div><input id="Lpassword" type="password" class="formLogin none" placeholder="Contraseña"></div>
             <div id="btnLogin" onclick="login()" class="none"></div>
+            <div id="backLogin" class="none" onclick="desplegarLogin()"></div>
         </form>
-        <div id="backLogin" class="none" onclick="desplegarLogin()"></div>
     </section>
 
     <section id="Registro" class="none">
-        <input id="username" type="text" placeholder="Nombre de usuario">
-        <input id="password" type="text" placeholder="Contraseña">
-        <input id="name" type="text" placeholder="Nombre">
-        <input id="lastname" type="text" placeholder="Apellido">
-        <input id="cedula" type="text" placeholder="Cedula">
-        <input id="edad" type="number" placeholder="Edad">
-        <input id="correo" type="text" placeholder="Correo">
-        <button onclick="Registro()">registro</button>
+
+        <form action="" id="form2">
+                    <div>
+                        <input id="username" type="text" class="formRegistro" placeholder="Nombre de usuario">
+                        <input id="password" type="password" class="formRegistro" placeholder="Contraseña">
+                    </div>
+                     <div>
+                        <input id="name" type="text" class="formRegistro" placeholder="Nombre">
+                        <input id="lastname" type="text" class="formRegistro" placeholder="Apellido">
+                    </div>
+                    <div>
+                        <input id="cedula" type="text" class="formRegistro" placeholder="Cedula">
+                        <input id="edad" type="number" class="formRegistro" placeholder="Edad">
+                    </div>
+                    <div>
+                        <input id="correo" type="text" class="formRegistro" placeholder="Correo">
+                    </div>
+                    <div id="btnRRegistro" onclick="Registro()"></div>
+                    <div id="backLogin2" onclick="toggle('Registro', 'Login')"></div>
+        </form>
+        
     </section>
     <section id="ScreenChaman" class="none">
         <div id="hola">

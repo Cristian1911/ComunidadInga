@@ -52,13 +52,41 @@ body, html{
     background-image: url("../img/login/iniciar.png");
 }
 
-#backLogin{
+#backLogin, #backLogin2{
     position: fixed;
-    margin-top: 86vh;
+    margin-top: 10vh;
     margin-left: 136.5px;
     width: 93px;
     height: 45px;
     background-image: url('../img/login/back.png');
+}
+
+#form2{
+    position: fixed;
+    box-sizing: border-box;
+    margin-top: 35vh;
+    width: 100vw;
+    text-align: center;
+}
+
+.formRegistro{
+    text-align: center;
+    font-family: 'Questrial', sans-serif, bold;
+    font-size: 17px;
+    background: #000000;
+    width: 160px;
+    height: 45px;
+    margin-bottom: 20px;
+    color: #8F9DA4;
+    border: 1px solid #8F9DA4;
+}
+
+#btnRRegistro{
+    position: fixed;
+    width: 173px;
+    height: 46px;
+    margin-left: 96.5px;
+    background-image: url("../img/login/iniciar.png");
 }
 
 .none{

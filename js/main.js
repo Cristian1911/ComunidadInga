@@ -126,7 +126,8 @@ function printsolicitud(){
 
 }
 
-function hide(id){
-    document.getElementById(id).classList.toggle("none");
+function toggle(id1, id2){
+    document.getElementById(id1).classList.toggle("none");
+    document.getElementById(id2).classList.toggle("none");
 }
 
