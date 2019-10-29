@@ -90,7 +90,7 @@ function login(){
                 }
             }
             else{
-                var ref1 = firebase.database().ref("Usuarios"); 
+                var ref1 = firebase.database().ref("Usuario"); 
                 ref1.once("value")
                     .then(function(snapshot) {   
                         hasname = snapshot.child(username).exists();
