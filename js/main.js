@@ -66,10 +66,11 @@ function desplegarLogin(){
     document.getElementById('Lusername').classList.toggle("none");
     document.getElementById('Lpassword').classList.toggle("none");
     document.getElementById('btnLogin').classList.toggle("none");
+    document.getElementById('btnIniciar').classList.toggle("none");
+    document.getElementById('backLogin').classList.toggle("none");
 }
 
 function login(){
-   
     var hasname;
     var username = document.getElementById("Lusername").value.toLowerCase();
     var password = document.getElementById("Lpassword").value.toLowerCase();
@@ -123,5 +124,9 @@ function printsolicitud(){
         });
 });
 
+}
+
+function hide(id){
+    document.getElementById(id).classList.toggle("none");
 }
 

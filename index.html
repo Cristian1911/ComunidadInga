@@ -3,18 +3,22 @@
 <head>
     <link rel="stylesheet" href="css/main.css">
     <script src="js/main.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">    
     <title>WASKA</title>
 </head>
 <body>
     <section id="Login" class="">
-        <button id="btnIniciar" onclick="desplegarLogin()">Iniciar Sesion</button>
-        <button id="btnLRegistro" onclick="cambiodepantalla('Login','Registro');"> Registro</button>
-        <input id="Lusername" type="text" class="none" placeholder="Nombre de usuario">
-        <input id="Lpassword" type="text" class="none" placeholder="Contraseña">
-        <button id="btnLogin" onclick="login()" class="none">Login</button>
+        <div id="btnIniciar" onclick="desplegarLogin()"></div>
+        <div id="btnLRegistro" onclick="cambiodepantalla('Login','Registro');"></div>
+        <form id="form1" action="">
+            <div><input id="Lusername" type="text" class="formLogin none" placeholder="Nombre de usuario"></div>
+            <div><input id="Lpassword" type="text" class="formLogin none" placeholder="Contraseña"></div>
+            <div id="btnLogin" onclick="login()" class="none"></div>
+        </form>
+        <div id="backLogin" class="none" onclick="desplegarLogin()"></div>
     </section>
 
     <section id="Registro" class="none">
