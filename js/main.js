@@ -1,6 +1,9 @@
 window.onload = init;
+var RegistroUser;
+
 
 function init(){
+
     var firebaseConfig = {
         apiKey: "AIzaSyAeZlUvp031fr3LC2bL9jjdl-0JMWqjNX4",
         authDomain: "waska-256002.firebaseapp.com",
@@ -12,7 +15,7 @@ function init(){
       };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
-
+    
 }
 
 
@@ -155,26 +158,37 @@ function showdetails(item){
 }
 
 function aceptar(item){
-    var datos;
-    var ref = firebase.database().ref('RegistroUser/'+item.id.split(".")[1]);
-    ref.once('value')
-       .then(function(snapshot) {
-        datos = snapshot.val();
-       
-    var ref1 = firebase.database().ref('Usuarios/');
-    ref1.child(item.id.split(".")[1]).set({
-        username : datos.username,
-        password : datos.password,
-        name : datos.name,
-        lastname : datos.lastname,
-        cedula : datos.cedula,
-        edad : datos.edad,
-        correo : datos.correo 
-      });      
-    });
+    var RegistroUser;      
 
-    cambiodepantalla('DetalleUsuario','ScreenChaman');
-    printsolicitud();
+        var ref = firebase.database().ref('RegistroUser/'+item.id.split(".")[1]);
+        ref.once('value')
+           .then(function(snapshot) {
+            RegistroUser = snapshot.val();
+            
+        
+            var ref1 = firebase.database().ref('Usuarios/'+item.id.split(".")[1]);
+            ref1.set({
+            username : RegistroUser.username,
+            password : RegistroUser.password,
+            name : RegistroUser.name,
+            lastname : RegistroUser.lastname,
+            cedula : RegistroUser.cedula,
+            edad : RegistroUser.edad,
+            correo : RegistroUser.correo 
+            })
+            .then(function() {
+                var ref2 = firebase.database().ref('RegistroUser/'+item.id.split(".")[1]);
+                ref2.remove();
+                cambiodepantalla('DetalleUsuario','ScreenChaman');
+                printsolicitud();
+            })
+              .catch(function(error) {
+                console.log('Synchronization failed');
+                cambiodepantalla('DetalleUsuario','ScreenChaman');
+                printsolicitud();
+            });    
+        
+        });
 }
 
 function rechazar(item){
