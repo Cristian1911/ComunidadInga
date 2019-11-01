@@ -52,7 +52,7 @@ body, html{
     background-image: url("../img/login/iniciar.png");
 }
 
-#backLogin, #backLogin2{
+#backLogin, #backLogin2, #backLogin2Chaman{
     position: fixed;
     margin-top: 10vh;
     margin-left: 136.5px;
@@ -81,7 +81,7 @@ body, html{
     border: 1px solid #8F9DA4;
 }
 
-#btnRRegistro{
+#btnRRegistro ,#btnRRegistroChaman{
     position: fixed;
     width: 173px;
     height: 46px;

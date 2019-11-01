@@ -59,6 +59,46 @@ function Registro(){
         });
 }
 
+function RegistroChaman(){
+    var username = document.getElementById("Cusername").value.toLowerCase();
+    var password = document.getElementById("Cpassword").value.toLowerCase();
+    var name = document.getElementById("Cname").value.toLowerCase();
+    var lastname = document.getElementById("Clastname").value.toLowerCase();
+    var cedula = document.getElementById("Ccedula").value.toLowerCase();
+    var edad = document.getElementById("Cedad").value.toLowerCase();
+    var correo = document.getElementById("Ccorreo").value.toLowerCase();
+    
+    var ref = firebase.database().ref("Chaman");
+        ref.once("value")
+        .then(function(snapshot) {
+            var hasname = snapshot.child(username).exists();
+            if(hasname == true){
+                alert('nombre de chaman en uso');
+            }
+            else{
+                var ref1 = firebase.database().ref("RegistroChaman");
+                ref1.once("value")
+                .then(function(snapshot) {
+                    var hasname1 = snapshot.child(username).exists();
+                    if(hasname1 == true){
+                        alert('nombre de chaman en uso(por aprobar)');
+                    }
+                    else{
+                        ref1.child(username).set({
+                           username : username,
+                           password : password,
+                           name : name,
+                           lastname : lastname,
+                           cedula : cedula,
+                           edad : edad,
+                           correo : correo 
+                        });
+                    }
+                });
+            }
+        });
+}
+
 function cambiodepantalla(screen1, screen2){
     document.getElementById(screen1).classList.add("none");
     document.getElementById(screen2).classList.remove("none");
@@ -85,8 +125,8 @@ function login(){
                 var pass = snapshot.child(username+"/password").val();
                 if(pass === password){
                     alert('eres chaman');
-                    cambiodepantalla('Login','ScreenChaman');
-                    printsolicitud();
+                    cambiodepantalla('Login','SolicitudesChaman');
+                    printsolicitudChaman();
                 }
                 else{
                     alert('contra chaman incorrecta');
@@ -123,8 +163,20 @@ function printsolicitud(){
         // key will be "ada" the first time and "alan" the second time
         var key = childSnapshot.key;
         // childData will be the actual contents of the child
-        var childData = childSnapshot.val();
         document.getElementById("hola").innerHTML += "<div class='formRegistro'>"+key+"<button onclick='showdetails(this)' id='detall."+key+"'>Detalle</button>";
+        });
+});
+
+}
+function printsolicitudChaman(){
+    document.getElementById("ListarSolicitudesC").innerHTML ="";
+    var query = firebase.database().ref("RegistroChaman").orderByKey();
+    query.once("value")
+    .then(function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+        // key will be "ada" the first time and "alan" the second time
+        var key = childSnapshot.key;
+        document.getElementById("ListarSolicitudesC").innerHTML += "<div class='formRegistro'>"+key+"<button onclick='showdetailsChaman(this)' id='detallC."+key+"'>Detalle</button>";
         });
 });
 
@@ -156,6 +208,27 @@ function showdetails(item){
 
     
 }
+
+function showdetailsChaman(item){
+    cambiodepantalla('SolicitudesChaman','DetalleChaman');
+    var campo = document.getElementById("listarDetalleChaman");
+    var key = item.id.split(".");
+    var ref = firebase.database().ref("RegistroChaman/"+key[1]);
+    ref.once("value")
+    .then(function(snapshot) {
+        campo.innerHTML = "cedula:"+snapshot.child("cedula").val()+"<br>";
+        campo.innerHTML += "correo:"+snapshot.child("correo").val()+"<br>";
+        campo.innerHTML += "edad:"+snapshot.child("edad").val()+"<br>";
+        campo.innerHTML += "name:"+snapshot.child("name").val()+"<br>";
+        campo.innerHTML += "lastname:"+snapshot.child("lastname").val()+"<br>";
+        campo.innerHTML += "password:"+snapshot.child("password").val()+"<br>";
+        campo.innerHTML += "username:"+snapshot.child("username").val()+"<br>";
+        campo.innerHTML += "<button id='aceptC."+key[1]+"' onclick='aceptarChaman(this)'> Acpetar </button>";
+        campo.innerHTML += "<button id='rechaC."+key[1]+"' onclick='rechazarChaman(this)'> Rechazar </button>";
+
+    });
+}
+
 
 function aceptar(item){
     var RegistroUser;      
@@ -190,11 +263,51 @@ function aceptar(item){
         
         });
 }
+function aceptarChaman(item){
+    var RegistroUser;      
 
+        var ref = firebase.database().ref('RegistroChaman/'+item.id.split(".")[1]);
+        ref.once('value')
+           .then(function(snapshot) {
+            RegistroUser = snapshot.val();
+            
+        
+            var ref1 = firebase.database().ref('Chaman/'+item.id.split(".")[1]);
+            ref1.set({
+            username : RegistroUser.username,
+            password : RegistroUser.password,
+            name : RegistroUser.name,
+            lastname : RegistroUser.lastname,
+            cedula : RegistroUser.cedula,
+            edad : RegistroUser.edad,
+            correo : RegistroUser.correo 
+            })
+            .then(function() {
+                var ref2 = firebase.database().ref('RegistroChaman/'+item.id.split(".")[1]);
+                ref2.remove();
+                cambiodepantalla('DetalleChaman','SolicitudesChaman');
+                printsolicitudChaman();
+            })
+              .catch(function(error) {
+                console.log('Synchronization failed');
+                cambiodepantalla('DetalleChaman','SolicitudesChaman');
+                printsolicitudChaman();
+            });    
+        
+        });
+}
 function rechazar(item){
     var ref = firebase.database().ref('RegistroUser/'+item.id.split(".")[1]);
     ref.remove();
     cambiodepantalla('DetalleUsuario','ScreenChaman');
+    printsolicitud();
+
+}
+
+function rechazarChaman(item){
+    var ref = firebase.database().ref('RegistroChaman/'+item.id.split(".")[1]);
+    ref.remove();
+    cambiodepantalla('DetalleChaman','SolicitudesChaman');
     printsolicitud();
 
 }

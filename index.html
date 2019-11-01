@@ -12,7 +12,7 @@
 <body>
     <section id="Login" class="">
         <div id="btnIniciar" onclick="desplegarLogin()"></div>
-        <div id="btnLRegistro" onclick="cambiodepantalla('Login','Registro');"></div>
+        <div id="btnLRegistro" onclick="cambiodepantalla('Login','RegistroChaman');"></div>
         <form id="form1" action="">
             <div><input id="Lusername" type="text" class="formLogin none" placeholder="Nombre de usuario"></div>
             <div><input id="Lpassword" type="password" class="formLogin none" placeholder="Contraseña"></div>
@@ -44,14 +44,51 @@
         </form>
         
     </section>
+    <section id="RegistroChaman" class="none">
+
+        <form action="" id="form1">
+                    <div>
+                        <input id="Cusername" type="text" class="formRegistro" placeholder="Nombre de usuario">
+                        <input id="Cpassword" type="password" class="formRegistro" placeholder="Contraseña">
+                    </div>
+                     <div>
+                        <input id="Cname" type="text" class="formRegistro" placeholder="Nombre">
+                        <input id="Clastname" type="text" class="formRegistro" placeholder="Apellido">
+                    </div>
+                    <div>
+                        <input id="Ccedula" type="text" class="formRegistro" placeholder="Cedula">
+                        <input id="Cedad" type="number" class="formRegistro" placeholder="Edad">
+                    </div>
+                    <div>
+                        <input id="Ccorreo" type="text" class="formRegistro" placeholder="Correo">
+                    </div>
+                    <div id="btnRRegistroChaman" onclick="RegistroChaman()"></div>
+                    <div id="backLogin2Chaman" onclick="toggle('RegistroChaman', 'Login')"></div>
+        </form>
+        
+    </section>
     <section id="ScreenChaman" class="none">
         <div id="hola">
+
+        </div>
+    </section>
+    <section id="SolicitudesChaman" class="none">
+        <div id="ListarSolicitudesC">
 
         </div>
     </section>
 
     <section id="DetalleUsuario" class="none">
         <div id="campo">
+            <div>
+                <label> </label><br>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="DetalleChaman" class="none">
+        <div id="listarDetalleChaman">
             <div>
                 <label> </label><br>
 
