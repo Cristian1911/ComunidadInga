@@ -1,10 +1,16 @@
-body, html{
+body, html, section{
+    width: 100%;
+    height: 100%;
     margin: 0;
     background-color: #379D89;
-    background-image: url('../img/login/background.png');
+    /*background-image: url('../img/login/background.png');*/
     background-repeat: no-repeat;
     overflow: hidden;
 }
+.all{
+    width: 100%;
+    height: 100%;
+  }
 
 #btnIniciar{
     position: fixed;

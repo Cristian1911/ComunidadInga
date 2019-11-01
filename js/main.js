@@ -1,3 +1,5 @@
+var arrayDias;
+var departamento;
 window.onload = init;
 var RegistroUser;
 
@@ -15,7 +17,8 @@ function init(){
       };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
-    
+      arrayDias = Array.from(document.querySelectorAll(".day"));
+      departamento = document.getElementById("Departamentos");
 }
 
 
@@ -141,6 +144,7 @@ function login(){
                             var pass = snapshot.child(username+"/password").val();
                             if(pass === password){
                                 alert('eres usuario');
+                                cambiodepantalla('Login','PantInicioUsuario');
                             }else{
                                 alert('contra mala de usuario');
                             }
@@ -310,5 +314,44 @@ function rechazarChaman(item){
     cambiodepantalla('DetalleChaman','SolicitudesChaman');
     printsolicitud();
 
+}
+
+function showMonth(){
+    cambiodepantalla('PantInicioUsuario','PantallaAgendar');
+    var fechaactual = new Date();
+    var diaActual = fechaactual.getDate();
+    var año = fechaactual.getFullYear();
+    var mesactual = fechaactual.getMonth();
+    var fechaEmpiezames = new Date(año,mesactual,1);
+    var diaEmpiezames = fechaEmpiezames.getDay();
+    arrayDias[diaEmpiezames].innerHTML = "1";
+
+    var fechaMesSgiuiente = new Date(año,mesactual+1,0);
+    var ultimoDiaMesAcutual = fechaMesSgiuiente.getDate();
+    arrayDias[diaEmpiezames+ultimoDiaMesAcutual-1].innerHTML = ultimoDiaMesAcutual;
+    var cont = 1;
+    var fechamesanterior = new Date(año,mesactual,0);
+        var ultimoDiaMesAnterior = fechamesanterior.getDate();
+    for (var i = diaEmpiezames-1; i >= 0; i--){
+        
+        arrayDias[i].innerHTML = ultimoDiaMesAnterior--;
+    }
+    var pasoAotroMes = false;
+    for(var i = diaEmpiezames ; i <42 ; i++){
+        arrayDias[i].innerHTML = cont++;
+        if(cont > diaActual || pasoAotroMes == true){ 
+            arrayDias[i].setAttribute("onclick","buscar(this,"+mesactual+");");
+        }
+        
+        if(cont == ultimoDiaMesAcutual+1){
+            cont = 1;
+            pasoAotroMes = true;
+            mesactual += 1;
+        }
+    }
+}
+
+function buscar(item,mesactual){
+    alert("buscar departamento:"+departamento.value+" dia:"+item.innerHTML+" mes:"+mesactual);
 }
 

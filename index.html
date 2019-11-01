@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
     <script src="js/main.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
@@ -8,6 +9,7 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">    
     <title>WASKA</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
     <section id="Login" class="">
@@ -67,14 +69,35 @@
         </form>
         
     </section>
+
+    <!-- PANTALLAS DEL CHAMAN                 -->
     <section id="ScreenChaman" class="none">
         <div id="hola">
 
         </div>
     </section>
+
     <section id="SolicitudesChaman" class="none">
         <div id="ListarSolicitudesC">
 
+        </div>
+    </section>
+
+    <section id="DetalleChaman" class="none">
+        <div id="listarDetalleChaman">
+            <div>
+                <label> </label><br>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!--PANTALLAS DEL USUARIO                 -->
+    
+    <section id="PantInicioUsuario" class="none">
+        <div>
+            <button id="" onclick="showMonth()">Agendar</button>
         </div>
     </section>
 
@@ -87,14 +110,77 @@
         </div>
     </section>
 
-    <section id="DetalleChaman" class="none">
-        <div id="listarDetalleChaman">
-            <div>
-                <label> </label><br>
+    <section id="PantallaAgendar" class="none">
+        <div class="all">
+            <select name="departamentos" id="Departamentos">
+                <option value="Antioquia" selected>Antioquia</option>
+                <option value="Amazonas">Amazonas</option>
+                <option value="Putumayo">Putumayo</option>
+            </select>
 
+            <div class="container">
+                <div class="col-sm-5">
+                <div class="row">
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                    <div class="col-sm-1 day">0</div>
+                </div>
+                </div>
             </div>
         </div>
     </section>
+
+    
+    
     
 </body>
 
