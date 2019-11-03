@@ -81,6 +81,24 @@
         <div id="ListarSolicitudesC">
 
         </div>
+        <button onclick="cambiodepantalla('SolicitudesChaman','CrearEvento')">crear un evento</button>
+    </section>
+    
+    <section id="CrearEvento">
+        <select name="departamentos" id="CrearDepartamentos">
+            <option value="Antioquia" selected>Antioquia</option>
+            <option value="Amazonas">Amazonas</option>
+            <option value="Putumayo">Putumayo</option>
+        </select>
+
+        <input id="Crearfecha" type="date" class="formRegistro">
+        <input id="Crearlugar" type="text" class="formRegistro" placeholder="Lugar">
+        <input id="Crearhora" type="text" class="formRegistro" placeholder="Hora">
+        <input id="CrearCupos" type="number" class="formRegistro" placeholder="Cupos">
+        <input id="Crearvalor" type="text" class="formRegistro" placeholder="valor">
+
+        <button onclick="crearEvento()">Crear un evento</button>
+
     </section>
 
     <section id="DetalleChaman" class="none">

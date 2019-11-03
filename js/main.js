@@ -1,8 +1,9 @@
 var arrayDias;
-var departamento;
+var departamento,Cdepartamento;
 window.onload = init;
 var RegistroUser;
-
+var arrayMeses;
+var Nombreuser;
 
 function init(){
 
@@ -19,6 +20,8 @@ function init(){
       firebase.initializeApp(firebaseConfig);
       arrayDias = Array.from(document.querySelectorAll(".day"));
       departamento = document.getElementById("Departamentos");
+      Cdepartamento =  document.getElementById("CrearDepartamentos");
+      arrayMeses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 }
 
 
@@ -130,6 +133,7 @@ function login(){
                     alert('eres chaman');
                     cambiodepantalla('Login','SolicitudesChaman');
                     printsolicitudChaman();
+                    Nombreuser = username;
                 }
                 else{
                     alert('contra chaman incorrecta');
@@ -145,6 +149,7 @@ function login(){
                             if(pass === password){
                                 alert('eres usuario');
                                 cambiodepantalla('Login','PantInicioUsuario');
+                                Nombreuser = username;
                             }else{
                                 alert('contra mala de usuario');
                             }
@@ -352,6 +357,19 @@ function showMonth(){
 }
 
 function buscar(item,mesactual){
-    alert("buscar departamento:"+departamento.value+" dia:"+item.innerHTML+" mes:"+mesactual);
+    alert("buscar departamento:"+departamento.value+" dia:"+item.innerHTML+" mes:"+arrayMeses[mesactual]);
+}
+
+
+function crearEvento(){
+    fecha = document.getElementById("Crearfecha").value;
+    var rfecha = fecha.split("-");
+    alert(rfecha);
+    var ref = firebase.database().ref('Eventos/'+Cdepartamento.value);
+    var newPostRef = ref.push();
+    newPostRef.set({
+        email : "hola",
+        username : "santi2"
+    });
 }
 
