@@ -4,6 +4,7 @@ window.onload = init;
 var RegistroUser;
 var arrayMeses;
 var Nombreuser;
+var Nombre,Apellido;
 
 function init(){
 
@@ -134,6 +135,11 @@ function login(){
                     cambiodepantalla('Login','SolicitudesChaman');
                     printsolicitudChaman();
                     Nombreuser = username;
+                    var ref = firebase.database().ref('Chaman/'+Nombreuser);
+                    ref.once('value').then(function(snapshot) {
+                        Nombre = snapshot.child("name").val();
+                        Apellido = snapshot.child("lastname").val();
+                    });
                 }
                 else{
                     alert('contra chaman incorrecta');
@@ -362,14 +368,33 @@ function buscar(item,mesactual){
 
 
 function crearEvento(){
-    fecha = document.getElementById("Crearfecha").value;
-    var rfecha = fecha.split("-");
-    alert(rfecha);
+    var Cfecha = document.getElementById("Crearfecha").value;
+    var Clugar = document.getElementById("Crearlugar").value;
+    var Chora = document.getElementById("Crearhora").value;
+    var Ccupos = document.getElementById("CrearCupos").value;
+    var Cvalor = document.getElementById("Crearvalor").value;
+    var rfecha = Cfecha.split("-");
+    var participantes=[];
+    for(var i = 0 ; i < Ccupos ; i++){
+        participantes[i]="";
+
+    } 
+
     var ref = firebase.database().ref('Eventos/'+Cdepartamento.value);
     var newPostRef = ref.push();
     newPostRef.set({
-        email : "hola",
-        username : "santi2"
+        Chaman : Nombreuser,
+        Nombre : Nombre+" "+Apellido,
+        año : rfecha[0], 
+        mes : rfecha[1],
+        dia : rfecha[2],
+        lugar : Clugar,
+        hora : Chora,
+        cupos : Ccupos,
+        cuposD : Ccupos,
+        valor : Cvalor,
+        lista : participantes    
     });
+    
 }
 
