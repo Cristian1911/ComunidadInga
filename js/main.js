@@ -29,10 +29,6 @@ function init(){
 function Registro(){
     var username = document.getElementById("username").value.toLowerCase();
     var password = document.getElementById("password").value.toLowerCase();
-    var name = document.getElementById("name").value.toLowerCase();
-    var lastname = document.getElementById("lastname").value.toLowerCase();
-    var cedula = document.getElementById("cedula").value.toLowerCase();
-    var edad = document.getElementById("edad").value.toLowerCase();
     var correo = document.getElementById("correo").value.toLowerCase();
     
     var ref = firebase.database().ref("Usuarios");
@@ -43,25 +39,13 @@ function Registro(){
                 alert('nombre de usuario en uso');
             }
             else{
-                var ref1 = firebase.database().ref("RegistroUser");
-                ref1.once("value")
-                .then(function(snapshot) {
-                    var hasname1 = snapshot.child(username).exists();
-                    if(hasname1 == true){
-                        alert('nombre de usuario en uso(por aprobar)');
-                    }
-                    else{
-                        ref1.child(username).set({
-                           username : username,
-                           password : password,
-                           name : name,
-                           lastname : lastname,
-                           cedula : cedula,
-                           edad : edad,
-                           correo : correo 
-                        });
-                    }
+               
+                ref.child(username).set({
+                username : username,
+                password : password,
+                correo : correo 
                 });
+                
             }
         });
 }
@@ -169,20 +153,9 @@ function login(){
 
 }
 
-function printsolicitud(){
-    document.getElementById("hola").innerHTML ="";
-    var query = firebase.database().ref("RegistroUser").orderByKey();
-    query.once("value")
-    .then(function(snapshot) {
-        snapshot.forEach(function(childSnapshot) {
-        // key will be "ada" the first time and "alan" the second time
-        var key = childSnapshot.key;
-        // childData will be the actual contents of the child
-        document.getElementById("hola").innerHTML += "<div class='formRegistro'>"+key+"<button onclick='showdetails(this)' id='detall."+key+"'>Detalle</button>";
-        });
-});
 
-}
+
+
 function printsolicitudChaman(){
     document.getElementById("ListarSolicitudesC").innerHTML ="";
     var query = firebase.database().ref("RegistroChaman").orderByKey();

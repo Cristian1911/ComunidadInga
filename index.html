@@ -14,7 +14,7 @@
 <body>
     <section id="Login" class="">
         <div id="btnIniciar" onclick="desplegarLogin()"></div>
-        <div id="btnLRegistro" onclick="cambiodepantalla('Login','RegistroChaman');"></div>
+        <div id="btnLRegistro" onclick="cambiodepantalla('Login','Registro');"></div>
         <form id="form1" action="">
             <div><input id="Lusername" type="text" class="formLogin none" placeholder="Nombre de usuario"></div>
             <div><input id="Lpassword" type="password" class="formLogin none" placeholder="Contraseña"></div>
@@ -28,19 +28,14 @@
         <form action="" id="form2">
                     <div>
                         <input id="username" type="text" class="formRegistro" placeholder="Nombre de usuario">
+                    </div>
+                    <div>
                         <input id="password" type="password" class="formRegistro" placeholder="Contraseña">
                     </div>
-                     <div>
-                        <input id="name" type="text" class="formRegistro" placeholder="Nombre">
-                        <input id="lastname" type="text" class="formRegistro" placeholder="Apellido">
-                    </div>
                     <div>
-                        <input id="cedula" type="text" class="formRegistro" placeholder="Cedula">
-                        <input id="edad" type="number" class="formRegistro" placeholder="Edad">
+                        <input id="correo" type="text" class="formRegistro" placeholder="Correo">                        
                     </div>
-                    <div>
-                        <input id="correo" type="text" class="formRegistro" placeholder="Correo">
-                    </div>
+
                     <div id="btnRRegistro" onclick="Registro()"></div>
                     <div id="backLogin2" onclick="toggle('Registro', 'Login')"></div>
         </form>
@@ -71,11 +66,7 @@
     </section>
 
     <!-- PANTALLAS DEL CHAMAN                 -->
-    <section id="ScreenChaman" class="none">
-        <div id="hola">
-
-        </div>
-    </section>
+    
 
     <section id="SolicitudesChaman" class="none">
         <div id="ListarSolicitudesC">
