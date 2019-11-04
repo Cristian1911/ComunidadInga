@@ -188,6 +188,83 @@
         </div>
     </section>
 
+    <section id="PantallaListarEventos" class="none">
+        <div id="listareventos">
+
+        </div>
+    </section>
+
+    <section id="DetalleEvento" class="none">
+        <div>
+            <label id="DetalleENombre"></label>
+            <label id="DetalleEHora"></label>
+            <label id="DetalleELugar"></label>
+            <label id="DetalleEGrupo"></label>
+            <label id="DetalleECupos"></label>
+            <label id="DetalleEValor"></label>
+            <button onclick="revisarcupos()">Abona Tu cupo</button>
+
+        </div>
+
+    </section>
+    <section id="pantallaAbonar" class="none">
+        <div>
+            <label >Telefono :</label>
+            <input type="text" class="formRegistro">
+            <br>
+
+            <label id="valorApagar"></label>
+
+            <label >Tarjeta :</label>
+            <select name="tarjeta" id="Tarjeta">
+                    <option value="Visa" selected>Visa</option>
+                    <option value="MasterCard">MasterCard</option>
+            </select>
+
+            <label >Numero :</label>
+            <input type="number" class="formRegistro">
+
+            <label >Expira :</label>
+            <select name="mes" id="mes">
+                    <option value="01" selected>01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+            </select>
+            <select name="año" id="año">
+                    <option value="20" selected>20</option>
+                    <option value="21"></option>
+                    <option value="22"></option>
+                    <option value="23"></option>
+                    <option value="24"></option>
+                    <option value="25"></option>
+
+            </select>
+
+            <label >Codigo seg. :</label>
+            <input type="password" class="formRegistro">
+
+            <button onclick="toggle('enviarCorreo')">pagar</button>
+        </div>
+        <div id="enviarCorreo" class="none">
+            <input id='EnviarCorreo' type="text" placeholder="correo">
+            <button onclick="abonar()">enviar</button>
+        </div>
+        <div id="VolverAlInicio" class="none">
+            <button onclick="findeagendar()">volver a la pagina principal</button>
+        </div>
+
+    </section>
+    
+
     
     
     

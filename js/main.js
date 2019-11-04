@@ -5,6 +5,7 @@ var RegistroUser;
 var arrayMeses;
 var Nombreuser;
 var Nombre,Apellido;
+var Idevento,cuposDis,listaParticipantes;
 
 function init(){
 
@@ -174,27 +175,17 @@ function toggle(id1, id2){
     document.getElementById(id1).classList.toggle("none");
     document.getElementById(id2).classList.toggle("none");
 }
-
-function showdetails(item){
-    cambiodepantalla('ScreenChaman','DetalleUsuario');
-    var campo = document.getElementById("campo");
-    var key = item.id.split(".");
-    var ref = firebase.database().ref("RegistroUser/"+key[1]);
-    ref.once("value")
-    .then(function(snapshot) {
-        campo.innerHTML = "cedula:"+snapshot.child("cedula").val()+"<br>";
-        campo.innerHTML += "correo:"+snapshot.child("correo").val()+"<br>";
-        campo.innerHTML += "edad:"+snapshot.child("edad").val()+"<br>";
-        campo.innerHTML += "name:"+snapshot.child("name").val()+"<br>";
-        campo.innerHTML += "lastname:"+snapshot.child("lastname").val()+"<br>";
-        campo.innerHTML += "password:"+snapshot.child("password").val()+"<br>";
-        campo.innerHTML += "username:"+snapshot.child("username").val()+"<br>";
-        campo.innerHTML += "<button id='acept."+key[1]+"' onclick='aceptar(this)'> Acpetar </button>";
-        campo.innerHTML += "<button id='recha."+key[1]+"' onclick='rechazar(this)'> Rechazar </button>";
-
-    });
-
-    
+function toggle(id1){
+        document.getElementById(id1).classList.toggle("none");
+}
+function revisarcupos(){
+    if(cuposDis == 0 ){
+        alert("no hay mas cupos");
+        cambiodepantalla('DetalleEvento','PantallaAgendar');
+    }
+    else{
+        cambiodepantalla('DetalleEvento','pantallaAbonar');
+    }
 }
 
 function showdetailsChaman(item){
@@ -217,40 +208,6 @@ function showdetailsChaman(item){
     });
 }
 
-
-function aceptar(item){
-    var RegistroUser;      
-
-        var ref = firebase.database().ref('RegistroUser/'+item.id.split(".")[1]);
-        ref.once('value')
-           .then(function(snapshot) {
-            RegistroUser = snapshot.val();
-            
-        
-            var ref1 = firebase.database().ref('Usuarios/'+item.id.split(".")[1]);
-            ref1.set({
-            username : RegistroUser.username,
-            password : RegistroUser.password,
-            name : RegistroUser.name,
-            lastname : RegistroUser.lastname,
-            cedula : RegistroUser.cedula,
-            edad : RegistroUser.edad,
-            correo : RegistroUser.correo 
-            })
-            .then(function() {
-                var ref2 = firebase.database().ref('RegistroUser/'+item.id.split(".")[1]);
-                ref2.remove();
-                cambiodepantalla('DetalleUsuario','ScreenChaman');
-                printsolicitud();
-            })
-              .catch(function(error) {
-                console.log('Synchronization failed');
-                cambiodepantalla('DetalleUsuario','ScreenChaman');
-                printsolicitud();
-            });    
-        
-        });
-}
 function aceptarChaman(item){
     var RegistroUser;      
 
@@ -283,13 +240,6 @@ function aceptarChaman(item){
             });    
         
         });
-}
-function rechazar(item){
-    var ref = firebase.database().ref('RegistroUser/'+item.id.split(".")[1]);
-    ref.remove();
-    cambiodepantalla('DetalleUsuario','ScreenChaman');
-    printsolicitud();
-
 }
 
 function rechazarChaman(item){
@@ -336,9 +286,67 @@ function showMonth(){
 }
 
 function buscar(item,mesactual){
+    cambiodepantalla('PantallaAgendar','PantallaListarEventos');
+    document.getElementById("listareventos").innerHTML ="";
+    var query = firebase.database().ref("Eventos/"+departamento.value).orderByKey();
+    query.once("value")
+    .then(function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+        // key will be "ada" the first time and "alan" the second time
+        var key = childSnapshot.key;
+        var childData = childSnapshot.val();
+        
+        if(item.innerHTML.length == 1){
+            if(childData.dia === "0"+item.innerHTML && mesactual+1 === parseInt(childData.mes) ){
+                document.getElementById("listareventos").innerHTML += "<div onclick='showdetalleEvento(this)' id='evento."+key+"' >"+childData.Nombre+" Lugar: "+childData.lugar+"<br> Grupo :"+childData.cupos+" personas   Hora:"+childData.hora+"</div>";
+            }
+        }else{
+            if(childData.dia === item.innerHTML && mesactual+1 === parseInt(childData.mes) ){
+                document.getElementById("listareventos").innerHTML += "<div onclick='showdetalleEvento(this)' id='evento."+key+"' >"+childData.Nombre+" Lugar: "+childData.lugar+"<br> Grupo :"+childData.cupos+" personas   Hora:"+childData.hora+"</div>";
+            }
+        }
+        
+        });
+    });
     alert("buscar departamento:"+departamento.value+" dia:"+item.innerHTML+" mes:"+arrayMeses[mesactual]);
 }
 
+function showdetalleEvento(item){
+    cambiodepantalla('PantallaListarEventos','DetalleEvento');
+
+    var ref = firebase.database().ref('Eventos/'+departamento.value+"/"+item.id.split(".")[1]);
+    ref.once('value')
+       .then(function(snapshot) {
+        document.getElementById("DetalleENombre").innerHTML = snapshot.child("Nombre").val();
+        document.getElementById("DetalleEHora").innerHTML = snapshot.child("hora").val();
+        document.getElementById("DetalleELugar").innerHTML = snapshot.child("lugar").val();
+        document.getElementById("DetalleEGrupo").innerHTML = snapshot.child("cupos").val()+" personas";
+        document.getElementById("DetalleECupos").innerHTML = snapshot.child("cuposD").val();
+        document.getElementById("DetalleEValor").innerHTML = snapshot.child("valor").val();
+        document.getElementById("valorApagar").innerHTML = parseInt(snapshot.child("valor").val()) * 0.2 ;
+        cuposDis = parseInt(snapshot.child("cuposD").val());
+        listaParticipantes = snapshot.child("lista").val();
+        });
+        Idevento = item.id.split(".")[1];
+    alert(item.id.split(".")[1]+" "+departamento.value);
+}
+
+function abonar(){
+    cambiodepantalla('enviarCorreo','VolverAlInicio');
+    cuposDis--;
+    console.log(listaParticipantes);
+    listaParticipantes[cuposDis] = Nombreuser;  
+    var ref = firebase.database().ref('Eventos/'+departamento.value+"/"+Idevento);
+    ref.update({
+        lista : listaParticipantes,
+        cuposD : ""+cuposDis
+    });
+
+}
+function findeagendar(){
+    cambiodepantalla('pantallaAbonar','PantInicioUsuario');
+    document.getElementById('VolverAlInicio').classList.add('none');
+}
 
 function crearEvento(){
     var Cfecha = document.getElementById("Crearfecha").value;
@@ -370,4 +378,6 @@ function crearEvento(){
     });
     
 }
+
+
 
