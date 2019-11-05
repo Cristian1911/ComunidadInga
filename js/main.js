@@ -5,7 +5,7 @@ var RegistroUser;
 var arrayMeses;
 var Nombreuser;
 var Nombre,Apellido;
-var Idevento,cuposDis,listaParticipantes;
+var Idevento,cuposDis,listaParticipantes,listaEventosuser=["0"];
 var founuser;
 
 
@@ -48,7 +48,8 @@ function Registro(){
                 ref.child(username).set({
                 username : username,
                 password : password,
-                correo : correo 
+                correo : correo,
+                lista : listaEventosuser
                 });
                 
             }
@@ -357,7 +358,12 @@ function abonar(){
     cambiodepantalla('enviarCorreo','VolverAlInicio');
     var emailsend = document.getElementById("EnviarCorreo").value;
     
+    var ref = firebase.database().ref('Usuarios/'+Nombreuser);
    
+    ref.once('value')
+       .then(function(snapshot) {
+        listaEventosuser = snapshot.child("lista").val();
+        });
     var ref1 = firebase.database().ref('Eventos/'+departamento.value+"/"+Idevento);
    
     ref1.once('value')
@@ -375,9 +381,9 @@ function abonar(){
             "mensagge": mensagge
          }
          
-         var service_id = "default_service";
-         var template_id = "formulario_de_pago";
-         emailjs.send(service_id, template_id, template_params);
+        var service_id = "default_service";
+        var template_id = "formulario_de_pago";
+        emailjs.send(service_id, template_id, template_params);
     });
     
     cuposDis--;
@@ -387,6 +393,14 @@ function abonar(){
     ref.update({
         lista : listaParticipantes,
         cuposD : ""+cuposDis
+    });
+    
+    listaEventosuser.push(departamento.value);
+    listaEventosuser.push(Idevento);
+    console.log(listaEventosuser);
+    var ref = firebase.database().ref('Usuarios/'+Nombreuser);
+    ref.update({
+       lista : listaEventosuser
     });
 
 }
