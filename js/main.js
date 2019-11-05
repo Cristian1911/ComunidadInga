@@ -6,6 +6,7 @@ var arrayMeses;
 var Nombreuser;
 var Nombre,Apellido;
 var Idevento,cuposDis,listaParticipantes;
+var founuser;
 
 
 function init(){
@@ -181,15 +182,6 @@ function toggle(id1, id2){
 function toggle(id1){
         document.getElementById(id1).classList.toggle("none");
 }
-function revisarcupos(){
-    if(cuposDis == 0 ){
-        alert("no hay mas cupos");
-        cambiodepantalla('DetalleEvento','PantallaAgendar');
-    }
-    else{
-        cambiodepantalla('DetalleEvento','pantallaAbonar');
-    }
-}
 
 function showdetailsChaman(item){
     cambiodepantalla('SolicitudesChaman','DetalleChaman');
@@ -333,6 +325,32 @@ function showdetalleEvento(item){
         Idevento = item.id.split(".")[1];
     alert(item.id.split(".")[1]+" "+departamento.value);
 }
+
+function revisarcupos(){
+    if(cuposDis == 0 ){
+        
+        alert("no hay mas cupos");
+        cambiodepantalla('DetalleEvento','PantallaAgendar');
+        
+    }
+    else{
+        founduser = false;
+        for(var i = 0 ; i < listaParticipantes.length; i++){
+            if(listaParticipantes[i] === Nombreuser){
+                founduser = true;
+            }
+        }
+        console.log(founduser);
+        if(founduser == true){
+            alert("ya estas inscrito");
+        cambiodepantalla('DetalleEvento','PantallaAgendar');
+        }
+        else{
+        cambiodepantalla('DetalleEvento','pantallaAbonar');
+        }
+    }
+}
+
 
 function abonar(){
     cambiodepantalla('enviarCorreo','VolverAlInicio');
