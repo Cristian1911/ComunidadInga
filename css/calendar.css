@@ -1,0 +1,51 @@
+#tableDiv {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.day, .theadR {
+    padding: 0;
+    padding-left: 0.2vw;
+    padding-right: 0.2vw;
+    padding-top: 0.2vh;
+    padding-bottom: 0.2vh;
+    text-align: center;
+    height: 3.6vh;
+    width: 7.5vw;
+}
+.day:hover {
+    background: #cacaca;
+    color: #fff;
+}
+.allCal {
+    left: 50%;
+    position: fixed;
+    top: 70%;
+    transform: translate(-50%, -50%);
+    height: 30vh;
+    width: 70vw;
+}
+.container {
+    position: relative;
+    width: 450px;
+    text-align: center;
+}
+.allCal {
+    background: #fff;
+    border-radius: 0 0 1em 1em;
+    -webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, .2), 0 3px 1px #fff;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, .2), 0 3px 1px #fff;
+    color: #555;
+    display: inline-block;
+    padding: 1em;
+}
+#thead {
+    color: #e66b6b;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.current-day {
+    color: #e66b6b;
+}
+.prev-month, .next-month {
+    color: #cacaca;
+}
