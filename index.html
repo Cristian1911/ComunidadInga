@@ -19,9 +19,10 @@
 
     <div id="navBar" class="none">
         <div id="leftButton" class="navButtons" onclick="cambiodepantalla('PantInicioUsuario', 'explora')"></div>
-        <div id="centralButton" class="navButtons" onclick="showMonth()"></div>
+        <div id="centralButton" class="navButtons" onclick="toggle('restricciones')"></div>
         <div id="rightButton" class="navButtons" onclick="cambiodepantalla('PantInicioUsuario', 'prepara')"></div>
     </div>
+
 
     <section id="Login" class="">
         <div id="btnIniciar" onclick="desplegarLogin()"></div>
@@ -151,7 +152,10 @@
                     doloribus totam quam labore
                 </h5>
             </div>
-            
+            <div id="restricciones" class="none">
+                <img src="img/agendar/condiciones.png" alt="terminos">
+                <img src="img/agendar/aceptar.png" alt="aceptar" onclick="showMonth()">
+            </div>
     </section>
 
     <section id="DetalleUsuario" class="none">
@@ -161,6 +165,7 @@
 
             </div>
         </div>
+
     </section>
 
     <section id="PantallaAgendar" class="none">
