@@ -199,6 +199,8 @@ body, html, section{
 
 #exploraTexto{
     height: 80vh;
+    margin-left: 10vw;
+    margin-top: 20vh;
 }
 
 #preparaTitulo{
