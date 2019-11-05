@@ -283,6 +283,7 @@ function showMonth(){
 }
 
 function buscar(item,mesactual){
+    toggle('restricciones');
     cambiodepantalla('PantallaAgendar','PantallaListarEventos');
     document.getElementById("listareventos").innerHTML ="";
     var query = firebase.database().ref("Eventos/"+departamento.value).orderByKey();
