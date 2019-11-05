@@ -59,6 +59,16 @@ body, html, section{
 
 /*---------------------------------------------- NAVBAR END ----------------------------------------------*/
 
+#restricciones{
+    position: fixed;
+    margin-top: 7vh;
+    text-align: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+/*------------------------------------------------Login-----------------------------------------------*/
+
 #btnIniciar{
     position: fixed;
     margin-top: 40vh;
@@ -142,6 +152,17 @@ body, html, section{
     background-image: url("../img/login/iniciar.png");
 }
 
+/*------------------------------------------------Login-----------------------------------------------*/
+
+.title{
+    text-align: center;
+    position: fixed;
+    height: 43px;
+    width: 80vw;
+    margin-top: 10vh;
+    margin-left: 10vw;
+}
+
 #Departamentos{
     position: fixed;
     width: 40vw;
@@ -160,12 +181,6 @@ body, html, section{
 }
 
 #exploraTitulo{
-    text-align: center;
-    position: fixed;
-    height: 43px;
-    width: 80vw;
-    margin-top: 10vh;
-    margin-left: 10vw;
     background-image: url('../img/experiencia.png');
     background-repeat: no-repeat;
 }
@@ -178,41 +193,74 @@ body, html, section{
     margin-left: 10vw;
 }
 
-#homeTitulo{
-    text-align: center;
-    position: fixed;
-    height: 43px;
-    width: 80vw;
-    margin-top: 25vh;
-    margin-left: 10vw;
-    background-image: url('../img/recientes.png');
+#preparaTitulo{
+    background-image: url('../img/prepara/sanacion.png');
     background-repeat: no-repeat;
 }
 
-#homeIntro{
+#preparaTexto{
     position: fixed;
-    height: 10vh;
+    height: 80vh;
     width: 80vw;
-    margin-top: 10vh;
+    margin-top: 20vh;
     margin-left: 10vw;
-}
-
-#homeImgs{
-    position: fixed;
-    height: 20vh;
-    width: 80vw;
-    margin-top: 38vh;
-    margin-left: 10vw;
-    border: 3px solid red;
     
 }
 
-#homeTexto{
-    position: fixed;
+#menteSel{
+    text-align: center;
+    float: left;
+    width: 50%;
     height: 30vh;
-    width: 80vw;
-    margin-top: 60vh;
+}
+
+#cuerpoSel{
+    text-align: center;
+    float: right;
+    width: 50%;
+    height: 30vh;
+    padding-top: 6px;
+}
+
+#preparaTitulo1{
+    background-image: url(../img/prepara/cambia.png);
+    background-repeat: no-repeat;
+}
+
+#preparaTitulo2{
+    background-image: url(../img/prepara/evitaConsumos.png);
+    background-repeat: no-repeat;
+}
+
+#preparaTitulo3{
+    background-image: url(../img/prepara/tranquiliza.png);
+    background-repeat: no-repeat;
+}
+
+.cuerpoText{
+    position: fixed;
     margin-left: 10vw;
+    margin-top: 20vh;
+    height: 80vh;
+    width: 80vw;
+}
+
+.cuerpoLeft{
+    float: left;
+    height: 10vh;
+    width: 10vw;
+    margin-top: 45vh;
+    background-image: url(../img/prepara/leftArrow.png);
+    background-repeat: no-repeat;
+}
+
+.cuerpoRight{
+    float: right;
+    height: 10vh;
+    width: 10vw;
+    margin-top: 45vh;
+    background-image: url(../img/prepara/rightArrow.png);
+    background-repeat: no-repeat;
 }
 
 .none{

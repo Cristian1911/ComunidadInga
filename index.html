@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/calendar.css">
+    <link rel="stylesheet" href="css/imgSlider.css">
     <script src="js/main.js"></script>
     <script src="js/menu.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
@@ -18,9 +19,10 @@
 
     <div id="navBar" class="none">
         <div id="leftButton" class="navButtons" onclick="cambiodepantalla('PantInicioUsuario', 'explora')"></div>
-        <div id="centralButton" class="navButtons" onclick="showMonth()"></div>
+        <div id="centralButton" class="navButtons" onclick="toggle('restricciones')"></div>
         <div id="rightButton" class="navButtons" onclick="cambiodepantalla('PantInicioUsuario', 'prepara')"></div>
     </div>
+
 
     <section id="Login" class="">
         <div id="btnIniciar" onclick="desplegarLogin()"></div>
@@ -150,7 +152,10 @@
                     doloribus totam quam labore
                 </h5>
             </div>
-            
+            <div id="restricciones" class="none">
+                <img src="img/agendar/condiciones.png" alt="terminos">
+                <img src="img/agendar/aceptar.png" alt="aceptar" onclick="showMonth()">
+            </div>
     </section>
 
     <section id="DetalleUsuario" class="none">
@@ -160,6 +165,7 @@
 
             </div>
         </div>
+
     </section>
 
     <section id="PantallaAgendar" class="none">
@@ -321,7 +327,7 @@
 
     <section id="explora" class="none">
         <div class="backBtn" onclick="cambiodepantalla('explora', 'PantInicioUsuario')"></div>
-        <div id="exploraTitulo"></div>
+        <div id="exploraTitulo" class="title"></div>
         <div id="exploraTexto">
             <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur praesentium,
                 doloribus totam quam labore, at in ullam perspiciatis, iure fugit quia nemo
@@ -332,13 +338,78 @@
             </h5>
         </div>
     </section>
+
+    <!-- ---------------------------------------------------------SECCION DE PREPARACIÓN--------------------------------------------------------- -->
     
-    <section id="prepara" class="none">
+    <section id="prepara" class="none" style="background-color: white;">
         <div class="backBtn" onclick="cambiodepantalla('prepara', 'PantInicioUsuario')"></div>
-        <h1>    PREPARA</h1>
+        <div id="preparaTitulo" class="title"></div>
+        <div id="preparaTexto">
+            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur praesentium,
+                doloribus totam quam labore, at in ullam perspiciatis, iure fugit quia nemo
+                eaque sed consequuntur excepturi 
+            </h5>
+            <div id="preparaSelecccion">
+                <div id="menteSel">
+                    <img src="img/prepara/mente.png" alt="mind" onclick="cambiodepantalla('prepara', 'preparaMente')">
+                </div>
+                <div id="cuerpoSel">
+                    <img src="img/prepara/cuerpo.png" alt="body" onclick="cambiodepantalla('prepara', 'preparaCuerpo1')">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="preparaMente" class="none" style="background-color: white;">
+            <div class="backBtn" onclick="cambiodepantalla('preparaMente', 'prepara')"></div>
+        Menteeee
+    </section>
+
+    <section id="preparaCuerpo1" class="none" style="background-color: white;">
+            <div class="backBtn" onclick="cambiodepantalla('preparaCuerpo1', 'prepara')"></div>
+            <div id="preparaTitulo1" class="title"></div>
+            <div>
+                <div class="cuerpoRight" onclick="cambiodepantalla('preparaCuerpo1', 'preparaCuerpo2')"></div>
+            </div>
+            <div class="cuerpoText">
+                Lorem ipsum dolor sit amet, consectetur adipisicing e
+                lit. Ad rerum tempore dolores, quaerat quae similique 
+                beatae, exercitationem commodi ipsa minus tempora quis 
+                recusandae, a odio consequuntur esse! Quos, exercitationem soluta?
+            </div>
+    </section>
+
+    <section id="preparaCuerpo2" class="none" style="background-color: white;">
+            <div class="backBtn" onclick="cambiodepantalla('preparaCuerpo2', 'prepara')"></div>
+            <div id="preparaTitulo2" class="title"></div>
+            <div>
+                <div class="cuerpoLeft" onclick="cambiodepantalla('preparaCuerpo2', 'preparaCuerpo1')"></div>
+                <div class="cuerpoRight" onclick="cambiodepantalla('preparaCuerpo2', 'preparaCuerpo3')"></div>
+            </div>
+            <div class="cuerpoText">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing e
+                    lit. Ad rerum tempore dolores, quaerat quae similique 
+                    beatae, exercitationem commodi ipsa minus tempora quis 
+                    recusandae, a odio consequuntur esse! Quos, exercitationem soluta?
+            </div>
+    </section>
+
+    <section id="preparaCuerpo3" class="none" style="background-color: white;">
+            <div class="backBtn" onclick="cambiodepantalla('preparaCuerpo3', 'prepara')"></div>
+            <div id="preparaTitulo3" class="title"></div>
+            <div>
+                <div class="cuerpoLeft" onclick="cambiodepantalla('preparaCuerpo3', 'preparaCuerpo2')">
+                </div>
+            </div>
+            <div class="cuerpoText">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing e
+                    lit. Ad rerum tempore dolores, quaerat quae similique 
+                    beatae, exercitationem commodi ipsa minus tempora quis 
+                    recusandae, a odio consequuntur esse! Quos, exercitationem soluta?
+            </div>
     </section>
     
-    
+    <!-- ---------------------------------------------------------SECCION DE PREPARACIÓN--------------------------------------------------------- -->
     
 </body>
 

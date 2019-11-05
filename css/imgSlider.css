@@ -1,0 +1,37 @@
+#homeTitulo{
+    text-align: center;
+    position: fixed;
+    height: 43px;
+    width: 80vw;
+    margin-top: 25vh;
+    margin-left: 10vw;
+    background-image: url('../img/home/recientes.png');
+    background-repeat: no-repeat;
+}
+
+#homeIntro{
+    position: fixed;
+    height: 10vh;
+    width: 80vw;
+    margin-top: 10vh;
+    margin-left: 10vw;
+}
+
+#homeImgs{
+    background-image: url('../img/home/1.png');
+    background-repeat: no-repeat;
+    position: fixed;
+    height: 20vh;
+    width: 80vw;
+    margin-top: 38vh;
+    margin-left: 10vw;
+    
+}
+
+#homeTexto{
+    position: fixed;
+    height: 30vh;
+    width: 80vw;
+    margin-top: 60vh;
+    margin-left: 10vw;
+}
