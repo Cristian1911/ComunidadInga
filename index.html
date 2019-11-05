@@ -24,7 +24,7 @@
     </div>
 
 
-    <section id="Login" class="">
+    <section id="Login" class="" style="background-image: url('img/login/background.png');">
         <div id="btnIniciar" onclick="desplegarLogin()"></div>
         <div id="btnLRegistro" onclick="cambiodepantalla('Login','Registro');"></div>
         <form id="form1" action="">
@@ -35,7 +35,7 @@
         </form>
     </section>
 
-    <section id="Registro" class="none">
+    <section id="Registro" class="none" style="background-image: url('img/login/background.png');">
 
         <form action="" id="form2">
                     <div>
@@ -53,7 +53,7 @@
         </form>
         
     </section>
-    <section id="RegistroChaman" class="none">
+    <section id="RegistroChaman" class="none" style="background-image: url('img/login/background.png');">
 
         <form action="" id="form1">
                     <div>
@@ -129,10 +129,10 @@
                       
 
                 <ul id="menu">
-                    <h3><li>Inicio</li></h3>
+                    <h3 onclick="noSection('PantInicioUsuario')"><li>Inicio</li></h3>
                     <h3><li>Perfil</li></h3>
                     <h3><li>Dudas</li></h3>
-                    <h3><li>Sobre la aplicación</li></h3>
+                    <h3 onclick="cambiodepantalla('PantInicioUsuario','creditos')"><li>Sobre la aplicación</li></h3>
                 </ul>
             </div>
         </nav>
@@ -146,7 +146,7 @@
             </div>
             <div id="homeTitulo"></div>
             <div id="homeImgs"></div>
-            <div id="homeTexto">
+            <div id="homeTexto" class="bodyText">
                 <h5>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur praesentium,
                     doloribus totam quam labore
@@ -168,9 +168,14 @@
 
     </section>
 
-    <section id="PantallaAgendar" class="none">
+    <section id="PantallaAgendar" class="none" style="background-color: white;">
         <div id="backInicio1" class="backBtn" onclick="cambiodepantalla('PantallaAgendar', 'PantInicioUsuario')"></div>
         <div class="all">
+            <div id="agendaTitulo" class="title"></div>
+            <div  class="bodyText">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi doloremque provident cupiditate sapiente cum
+                , maxime culpa earum est incidunt ea voluptatem expedita
+            </div>
             <select name="departamentos" id="Departamentos">
                 <option value="Antioquia" selected>Antioquia</option>
                 <option value="Amazonas">Amazonas</option>
@@ -328,7 +333,7 @@
     <section id="explora" class="none">
         <div class="backBtn" onclick="cambiodepantalla('explora', 'PantInicioUsuario')"></div>
         <div id="exploraTitulo" class="title"></div>
-        <div id="exploraTexto">
+        <div id="exploraTexto" class="bodyText">
             <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur praesentium,
                 doloribus totam quam labore, at in ullam perspiciatis, iure fugit quia nemo
                 eaque sed consequuntur excepturi dignissimos explicabo magnam officiis. Lorem 
@@ -344,7 +349,7 @@
     <section id="prepara" class="none" style="background-color: white;">
         <div class="backBtn" onclick="cambiodepantalla('prepara', 'PantInicioUsuario')"></div>
         <div id="preparaTitulo" class="title"></div>
-        <div id="preparaTexto">
+        <div id="preparaTexto" class="bodyText">
             <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur praesentium,
                 doloribus totam quam labore, at in ullam perspiciatis, iure fugit quia nemo
                 eaque sed consequuntur excepturi 
@@ -360,10 +365,28 @@
         </div>
     </section>
 
+    <!-- ---------------------------------------------------------PREPARACIÓN MENTE--------------------------------------------------------- -->
+
     <section id="preparaMente" class="none" style="background-color: white;">
             <div class="backBtn" onclick="cambiodepantalla('preparaMente', 'prepara')"></div>
-        Menteeee
+            <div class="divMeditar">
+                <img class="imgMeditar" src="img/prepara/meditar.png" alt="">
+                <div class="cuerpo2Right" onclick="cambiodepantalla('preparaMente', 'preparaMente2')"></div>
+            </div>
     </section>
+
+    <section id="preparaMente2" class="none">
+            <div class="backBtn" onclick="cambiodepantalla('preparaMente2', 'prepara')"></div>
+            
+            <div class="divMeditar">
+                <img class="imgMeditar" src="img/prepara/meditar2.png" alt="">
+                <div class="cuerpo2Left" onclick="cambiodepantalla('preparaMente2', 'preparaMente')"></div>
+            </div>
+    </section>
+
+    <!-- ---------------------------------------------------------PREPARACIÓN MENTE--------------------------------------------------------- -->
+
+    <!-- ---------------------------------------------------------PREPARACIÓN CUERPO--------------------------------------------------------- -->
 
     <section id="preparaCuerpo1" class="none" style="background-color: white;">
             <div class="backBtn" onclick="cambiodepantalla('preparaCuerpo1', 'prepara')"></div>
@@ -408,8 +431,22 @@
                     recusandae, a odio consequuntur esse! Quos, exercitationem soluta?
             </div>
     </section>
+    <!-- ---------------------------------------------------------PREPARACIÓN CUERPO--------------------------------------------------------- -->
     
     <!-- ---------------------------------------------------------SECCION DE PREPARACIÓN--------------------------------------------------------- -->
+
+
+    <!-- ---------------------------------------------------------CREDITOS--------------------------------------------------------- -->
+
+    <section id="creditos" class="none" style="background-color: white;">
+        <div class="backBtn" onclick="cambiodepantalla('creditos', 'PantInicioUsuario')"></div>
+        <div class="scrollable">
+            <img src="img/creditos/creditos.png" alt="">
+            <img src="img/creditos/creditos2.png" alt="">
+        </div>
+    </section>
+    <!-- ---------------------------------------------------------CREDITOS--------------------------------------------------------- -->
+
     
 </body>
 

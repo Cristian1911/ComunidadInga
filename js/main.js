@@ -426,4 +426,9 @@ function crearEvento(){
     
 }
 
+function noSection(id){
+    document.getElementsByTagName('section')[0].setAttribute("class", "none");
+    document.getElementById(id).classList.remove("none");
+}
+
 
