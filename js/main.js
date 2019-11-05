@@ -138,8 +138,8 @@ function login(){
                         if(hasname == true){
                             var pass = snapshot.child(username+"/password").val();
                             if(pass === password){
-                                alert('eres usuario');
                                 cambiodepantalla('Login','PantInicioUsuario');
+                                toggle('navBar');
                                 Nombreuser = username;
                             }else{
                                 alert('contra mala de usuario');
@@ -171,10 +171,10 @@ function printsolicitudChaman(){
 
 }
 
-function toggle(id1, id2){
+/*function toggle(id1, id2){
     document.getElementById(id1).classList.toggle("none");
     document.getElementById(id2).classList.toggle("none");
-}
+}*/
 function toggle(id1){
         document.getElementById(id1).classList.toggle("none");
 }

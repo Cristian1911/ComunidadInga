@@ -3,7 +3,10 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/calendar.css">
     <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
@@ -12,6 +15,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
+
+    <div id="navBar" class="none">
+        <div id="leftButton" class="navButtons" onclick="cambiodepantalla('PantInicioUsuario', 'explora')"></div>
+        <div id="centralButton" class="navButtons" onclick="showMonth()"></div>
+        <div id="rightButton" class="navButtons" onclick="cambiodepantalla('PantInicioUsuario', 'prepara')"></div>
+    </div>
+
     <section id="Login" class="">
         <div id="btnIniciar" onclick="desplegarLogin()"></div>
         <div id="btnLRegistro" onclick="cambiodepantalla('Login','Registro');"></div>
@@ -37,7 +47,7 @@
                     </div>
 
                     <div id="btnRRegistro" onclick="Registro()"></div>
-                    <div id="backLogin2" onclick="toggle('Registro', 'Login')"></div>
+                    <div id="backLogin2" onclick="cambiodepantalla('Registro', 'Login')"></div>
         </form>
         
     </section>
@@ -105,9 +115,36 @@
     <!--PANTALLAS DEL USUARIO                 -->
     
     <section id="PantInicioUsuario" class="none">
-        <div>
-            <button id="" onclick="showMonth()">Agendar</button>
-        </div>
+        <nav role="navigation">
+            <div id="menuToggle">
+                <!--
+                A fake / hidden checkbox is used as click reciever,
+                so you can use the :checked selector on it.
+                -->
+                <input type="checkbox" />
+                      
+                <!--
+                Some spans to act as a hamburger.
+                      
+                They are acting like a real hamburger,
+                not that McDonalds stuff.
+                -->
+                <span></span>
+                <span></span>
+                <span></span>
+                      
+                <!--
+                Too bad the menu has to be inside of the button
+                but hey, it's pure CSS magic.
+                -->
+                <ul id="menu">
+                    <h3><li>Inicio</li></h3>
+                    <h3><li>Perfil</li></h3>
+                    <h3><li>Dudas</li></h3>
+                    <h3><li>Sobre la aplicación</li></h3>
+                </ul>
+            </div>
+        </nav>
     </section>
 
     <section id="DetalleUsuario" class="none">
@@ -120,6 +157,7 @@
     </section>
 
     <section id="PantallaAgendar" class="none">
+        <div id="backInicio1" class="backBtn" onclick="cambiodepantalla('PantallaAgendar', 'PantInicioUsuario')"></div>
         <div class="all">
             <select name="departamentos" id="Departamentos">
                 <option value="Antioquia" selected>Antioquia</option>
@@ -127,65 +165,139 @@
                 <option value="Putumayo">Putumayo</option>
             </select>
 
-            <div class="container">
-                <div class="col-sm-5">
-                <div class="row">
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                    <div class="col-sm-1 day">0</div>
-                </div>
+              <div class="container">
+                <div class="col-sm-1">
+                    <div class="row">
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                        <div class="col-sm-1 day">0</div>
+                    </div>
                 </div>
             </div>
-        </div>
+
+            <!--  
+            <div class="container">
+                <div class="calendar-container">                  
+                    <table class="calendar">
+                        <thead>
+                            <tr>
+                                <td>Lun</td>
+                                <td>Mar</td>
+                                <td>Mie</td>
+                                <td>Jue</td>
+                                <td>Vie</td>
+                                <td>Sab</td>
+                                <td>Dom</td>
+                            </tr>
+                        </thead>
+                  
+                        <tbody>
+                            <tr class="row">
+                                <td class="prev-month">29</td>
+                                <td class="prev-month">30</td>
+                                <td class="prev-month">31</td>
+                                <td class="day">0</td>
+                                <td class="day">0</td>
+                                <td>3</td>
+                                <td>4</td>
+                            </tr>
+                  
+                            <tr>
+                                <td>5</td>
+                                <td>6</td>
+                                <td>7</td>
+                                <td>8</td>
+                                <td>9</td>
+                                <td>10</td>
+                                <td>11</td>
+                            </tr>
+                  
+                            <tr>
+                                <td>12</td>
+                                <td>13</td>
+                                <td>14</td>
+                                <td>15</td>
+                                <td>16</td>
+                                <td>17</td>
+                                <td>18</td>
+                            </tr>
+                  
+                            <tr>
+                                <td>19</td>
+                                <td>20</td>
+                                <td>21</td>
+                                <td>22</td>
+                                <td>23</td>
+                                <td>24</td>
+                                <td>25</td>
+                            </tr>
+                  
+                            <tr>
+                                <td>26</td>
+                                <td>27</td>
+                                <td>28</td>
+                                <td>29</td>
+                                <td>30</td>
+                                <td>31</td>
+                                <td class="next-month">1</td>
+                            </tr>
+                  
+                        </tbody>
+                  
+                    </table>                  
+                </div> <!- end calendar-container --
+                  
+            </div> --> <!-- end container --> 
+        </div>  <!-- Fin Div ALL-->
     </section>
 
     <section id="PantallaListarEventos" class="none">
@@ -263,8 +375,16 @@
         </div>
 
     </section>
-    
 
+    <section id="explora" class="none">
+        <div class="backBtn" onclick="cambiodepantalla('explora', 'PantInicioUsuario')"></div>
+        <h1>a        EXPLORA</h1>
+    </section>
+    
+    <section id="prepara" class="none">
+        <div class="backBtn" onclick="cambiodepantalla('prepara', 'PantInicioUsuario')"></div>
+        <h1>    PREPARA</h1>
+    </section>
     
     
     
