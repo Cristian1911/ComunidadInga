@@ -308,7 +308,7 @@ body, html, section{
 
   #perfil{
       position: fixed;
-      margin-top: 15vh;
+      margin-top: 10vh;
       width: 100vw;
       height: 80vh;
       text-align: center;
