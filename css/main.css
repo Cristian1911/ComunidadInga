@@ -319,3 +319,9 @@ body, html, section{
 .none{
     display: none;
 }
+
+
+#divDetalle{
+    text-align: center;
+    margin-top: 15vh;
+}
