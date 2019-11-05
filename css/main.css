@@ -306,6 +306,14 @@ body, html, section{
     margin-top: 4vh; 
   }
 
+  #perfil{
+      position: fixed;
+      margin-top: 15vh;
+      width: 100vw;
+      height: 80vh;
+      text-align: center;
+  }
+
 .none{
     display: none;
 }
