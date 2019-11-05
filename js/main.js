@@ -7,8 +7,9 @@ var Nombreuser;
 var Nombre,Apellido;
 var Idevento,cuposDis,listaParticipantes;
 
-function init(){
 
+function init(){
+    emailjs.init('user_IeS54vH1HD8MKpUuHk5rH');
     var firebaseConfig = {
         apiKey: "AIzaSyAeZlUvp031fr3LC2bL9jjdl-0JMWqjNX4",
         authDomain: "waska-256002.firebaseapp.com",
@@ -24,7 +25,9 @@ function init(){
       departamento = document.getElementById("Departamentos");
       Cdepartamento =  document.getElementById("CrearDepartamentos");
       arrayMeses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-}
+    
+    }
+
 
 
 function Registro(){
@@ -333,6 +336,31 @@ function showdetalleEvento(item){
 
 function abonar(){
     cambiodepantalla('enviarCorreo','VolverAlInicio');
+    var emailsend = document.getElementById("EnviarCorreo").value;
+    
+   
+    var ref1 = firebase.database().ref('Eventos/'+departamento.value+"/"+Idevento);
+   
+    ref1.once('value')
+       .then(function(snapshot) {
+        var datosmensaje = [];
+        datosmensaje[0] = snapshot.child("año").val();
+        datosmensaje[1] = snapshot.child("mes").val();
+        datosmensaje[2] = snapshot.child("dia").val();
+        datosmensaje[3] = snapshot.child("Nombre").val();
+        datosmensaje[4] = snapshot.child("lugar").val();
+        
+        var mensagge = "Recuarda que la fecha del evento es "+datosmensaje[0]+"/"+datosmensaje[1]+"/"+datosmensaje[2]+". El nombre del chaman es: "+datosmensaje[3]+" y el lugar es: "+datosmensaje[4];
+        var template_params = {
+            "user_email": emailsend,
+            "mensagge": mensagge
+         }
+         
+         var service_id = "default_service";
+         var template_id = "formulario_de_pago";
+         emailjs.send(service_id, template_id, template_params);
+    });
+    
     cuposDis--;
     console.log(listaParticipantes);
     listaParticipantes[cuposDis] = Nombreuser;  
