@@ -121,7 +121,7 @@ function login(){
             if(hasname == true){
                 var pass = snapshot.child(username+"/password").val();
                 if(pass === password){
-                    alert('eres chaman');
+                    
                     cambiodepantalla('Login','SolicitudesChaman');
                     printsolicitudChaman();
                     Nombreuser = username;
@@ -306,7 +306,7 @@ function buscar(item,mesactual){
         
         });
     });
-    alert("buscar departamento:"+departamento.value+" dia:"+item.innerHTML+" mes:"+arrayMeses[mesactual]);
+    /*alert("buscar departamento:"+departamento.value+" dia:"+item.innerHTML+" mes:"+arrayMeses[mesactual]);*/
 }
 
 function showdetalleEvento(item){
@@ -326,7 +326,7 @@ function showdetalleEvento(item){
         listaParticipantes = snapshot.child("lista").val();
         });
         Idevento = item.id.split(".")[1];
-    alert(item.id.split(".")[1]+" "+departamento.value);
+    /*alert(item.id.split(".")[1]+" "+departamento.value);*/
 }
 
 function revisarcupos(){
