@@ -140,6 +140,7 @@ function login(){
                             if(pass === password){
                                 cambiodepantalla('Login','PantInicioUsuario');
                                 toggle('navBar');
+                                toggle('burgerMenu');
                                 Nombreuser = username;
                             }else{
                                 alert('contra mala de usuario');
