@@ -1,3 +1,4 @@
+var secciones = [];
 var arrayDias;
 var departamento,Cdepartamento;
 window.onload = init;
@@ -8,6 +9,7 @@ var Nombre,Apellido;
 var Idevento,cuposDis,listaParticipantes,listaEventosuser=["0"];
 var founuser;
 var eventosUser, imprimireventos;
+
 
 
 function init(){
@@ -30,7 +32,29 @@ function init(){
     
     }
 
-
+function cargarSecciones(){
+    secciones[1] = document.getElementById("Login");
+    secciones[2] = document.getElementById("Registro");
+    secciones[3] = document.getElementById("RegistroChaman");
+    secciones[4] = document.getElementById("SolicitudesChaman");
+    secciones[5] = document.getElementById("CrearEvento");
+    secciones[6] = document.getElementById("DetalleChaman");
+    secciones[7] = document.getElementById("PantInicioUsuario");
+    secciones[8] = document.getElementById("DetalleUsuario");
+    secciones[9] = document.getElementById("PantallaAgendar");
+    secciones[10] = document.getElementById("DetalleEvento");
+    secciones[11] = document.getElementById("PantallaListarEventos");
+    secciones[12] = document.getElementById("pantallaAbonar");
+    secciones[13] = document.getElementById("explora");
+    secciones[14] = document.getElementById("prepara");
+    secciones[15] = document.getElementById("preparaMente");
+    secciones[16] = document.getElementById("preparaMente2");
+    secciones[17] = document.getElementById("preparaCuerpo1");
+    secciones[18] = document.getElementById("preparaCuerpo2");
+    secciones[19] = document.getElementById("preparaCuerpo3");
+    secciones[20] = document.getElementById("creditos");
+    secciones[21] = document.getElementById("profile");
+}
 
 function Registro(){
     var username = document.getElementById("username").value.toLowerCase();
@@ -470,6 +494,17 @@ function perfil(){
 
 
 
+}
+
+function ocultar(){
+    for(let i=1;i<secciones.length;i++){
+        secciones[i].classList.add("none");
+    }
+}
+
+function cambiarSeccion(target){
+    ocultar();
+    secciones[target].classList.remove("none");
 }
 
 

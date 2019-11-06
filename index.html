@@ -19,15 +19,15 @@
 <body>
 
     <div id="navBar" class="none">
-        <div id="leftButton" class="navButtons" onclick="cambiodepantalla('PantInicioUsuario', 'explora')"></div>
+        <div id="leftButton" class="navButtons" onclick="cambiarSeccion('13')"></div>
         <div id="centralButton" class="navButtons" onclick="toggle('restricciones')"></div>
-        <div id="rightButton" class="navButtons" onclick="cambiodepantalla('PantInicioUsuario', 'prepara')"></div>
+        <div id="rightButton" class="navButtons" onclick="cambiarSeccion('14')"></div>
     </div>
 
 
-    <section id="Login" class="" style="background-image: url('img/login/background.png');">
-        <div id="btnIniciar" onclick="desplegarLogin()"></div>
-        <div id="btnLRegistro" onclick="cambiodepantalla('Login','Registro');"></div>
+    <section id="Login" class="" style="background-image: url('img/login/background.png');"> <!--1-->
+        <div id="btnIniciar" onclick="desplegarLogin(), cargarSecciones()"></div>
+        <div id="btnLRegistro" onclick="cambiarSeccion('2')"></div>
         <form id="form1" action="">
             <div><input id="Lusername" type="text" class="formLogin none" placeholder="Nombre de usuario"></div>
             <div><input id="Lpassword" type="password" class="formLogin none" placeholder="Contraseña"></div>
@@ -36,7 +36,7 @@
         </form>
     </section>
 
-    <section id="Registro" class="none" style="background-image: url('img/login/background.png');">
+    <section id="Registro" class="none" style="background-image: url('img/login/background.png');"> <!--2-->
 
         <form action="" id="form2">
                     <div>
@@ -50,11 +50,11 @@
                     </div>
 
                     <div id="btnRRegistro" onclick="Registro()"></div>
-                    <div id="backLogin2" onclick="cambiodepantalla('Registro', 'Login')"></div>
+                    <div id="backLogin2" onclick="cambiarSeccion('1')"></div>
         </form>
         
     </section>
-    <section id="RegistroChaman" class="none" style="background-image: url('img/login/background.png');">
+    <section id="RegistroChaman" class="none" style="background-image: url('img/login/background.png');"> <!--3-->
 
         <form action="" id="form1">
                     <div>
@@ -81,14 +81,14 @@
     <!-- PANTALLAS DEL CHAMAN                 -->
     
 
-    <section id="SolicitudesChaman" class="none">
+    <section id="SolicitudesChaman" class="none"> <!--4-->
         <div id="ListarSolicitudesC">
 
         </div>
-        <button onclick="cambiodepantalla('SolicitudesChaman','CrearEvento')">crear un evento</button>
+        <button onclick="cambiarSeccion('5')">crear un evento</button>
     </section>
     
-    <section id="CrearEvento" class="none">
+    <section id="CrearEvento" class="none"> <!--5-->
         <select name="departamentos" id="CrearDepartamentos">
             <option value="Antioquia" selected>Antioquia</option>
             <option value="Amazonas">Amazonas</option>
@@ -105,7 +105,7 @@
 
     </section>
 
-    <section id="DetalleChaman" class="none">
+    <section id="DetalleChaman" class="none"> <!--6-->
         <div id="listarDetalleChaman">
             <div>
                 <label> </label><br>
@@ -130,15 +130,15 @@
                       
 
                 <ul id="menu">
-                    <h3 onclick="noSection('PantInicioUsuario')"><li>Inicio</li></h3>
+                    <h3 onclick="cambiarSeccion('7')"><li>Inicio</li></h3>
                     <h3 onclick="perfil()"><li>Perfil</li></h3>
-                    <h3><li>Dudas</li></h3>
-                    <h3 onclick="cambiodepantalla('PantInicioUsuario','creditos')"><li>Sobre la aplicación</li></h3>
+                   <!-- <h3><li>Dudas</li></h3> -->
+                    <h3 onclick="cambiarSeccion('20')"><li>Sobre la aplicación</li></h3>
                 </ul>
             </div>
         </nav>
 
-    <section id="PantInicioUsuario" class="none">
+    <section id="PantInicioUsuario" class="none"> <!--7-->
             <div id="homeIntro">
                 <h5>
                     Conéctate con el sentido del Yagé y la medicina ancestral. Conoce, prepárate y entra en esta experiencia de sanación. 
@@ -153,11 +153,11 @@
             </div>
             <div id="restricciones" class="none">
                 <img src="img/agendar/condiciones.png" alt="terminos">
-                <img src="img/agendar/aceptar.png" alt="aceptar" onclick="showMonth()">
+                <img src="img/agendar/aceptar.png" alt="aceptar" onclick="showMonth(), toggle('restricciones')">
             </div>
     </section>
 
-    <section id="DetalleUsuario" class="none">
+    <section id="DetalleUsuario" class="none"> <!--8-->
         <div id="campo">
             <div>
                 <label> </label><br>
@@ -167,8 +167,8 @@
 
     </section>
 
-    <section id="PantallaAgendar" class="none" style="background-color: white;">
-        <div id="backInicio1" class="backBtn" onclick="cambiodepantalla('PantallaAgendar', 'PantInicioUsuario')"></div>
+    <section id="PantallaAgendar" class="none" style="background-color: white;"> <!--9-->
+        <div id="backInicio1" class="backBtn" onclick="cambiarSeccion('7')"></div>
         <div class="all">
             <div id="agendaTitulo" class="title"></div>
             <div  class="bodyText">
@@ -253,16 +253,16 @@
         </div>  <!-- Fin Div ALL-->
     </section>
 
-    <section id="PantallaListarEventos" class="none">
-        <div id="backInicio1" class="backBtn" onclick="cambiodepantalla('PantallaListarEventos', 'PantallaAgendar')"></div>
+    <section id="PantallaListarEventos" class="none"> <!--11-->
+        <div id="backInicio1" class="backBtn" onclick="cambiarSeccion('9')"></div>
         <div id="agendaTitulo2"></div>
         <div id="listareventos">
 
         </div>
     </section>
 
-    <section id="DetalleEvento" class="none">
-        <div id="backInicio1" class="backBtn" onclick="cambiodepantalla('DetalleEvento', 'PantallaListarEventos')"></div>
+    <section id="DetalleEvento" class="none"> <!--10-->
+        <div id="backInicio1" class="backBtn" onclick="cambiarSeccion('11')"></div>
         <div id="agendaTitulo2"></div>
         <div id="divDetalle">
             <div id="divDetalle1">
@@ -293,8 +293,9 @@
             <img src="img/map.png" alt="">
         </div>
     </section>
-    <section id="pantallaAbonar" class="none">
-        <div id="backInicio1" class="backBtn" onclick="cambiodepantalla('pantallaAbonar', 'DetalleEvento')"></div>
+
+    <section id="pantallaAbonar" class="none"> <!--12-->
+        <div id="backInicio1" class="backBtn" onclick="cambiarSeccion('10')"></div>
         <div id="abonaTitulo" class="title"></div>
         <p id="textAbonar">Debes abonar el 20% del valor total de tu experiencia para reservar el cupo.</p>
         <div>
@@ -352,8 +353,8 @@
 
     </section>
 
-    <section id="explora" class="none">
-        <div class="backBtn" onclick="cambiodepantalla('explora', 'PantInicioUsuario')"></div>
+    <section id="explora" class="none"> <!--13-->
+        <div class="backBtn" onclick="cambiarSeccion('7')"></div>
         <div id="exploraTitulo" class="title"></div>
         <div id="exploraTexto" class="scrollable bodyText">
             <img src="img/explora.png" alt="">
@@ -362,8 +363,8 @@
 
     <!-- ---------------------------------------------------------SECCION DE PREPARACIÓN--------------------------------------------------------- -->
     
-    <section id="prepara" class="none" style="background-color: white;">
-        <div class="backBtn" onclick="cambiodepantalla('prepara', 'PantInicioUsuario')"></div>
+    <section id="prepara" class="none" style="background-color: white;"> <!--14-->
+        <div class="backBtn" onclick="cambiarSeccion('7')"></div>
         <div id="preparaTitulo" class="title"></div>
         <div id="preparaTexto" class="bodyText">
             <h5>Antes de tener una experiencia con el Yagé, el cuerpo, el espíritu y la mente deben estar preparados. Debes entender que se trata de una curación y purificación de todo lo que eres como ser. 
@@ -372,10 +373,10 @@
             </h5>
             <div id="preparaSelecccion">
                 <div id="menteSel">
-                    <img src="img/prepara/mente.png" alt="mind" onclick="cambiodepantalla('prepara', 'preparaMente')">
+                    <img src="img/prepara/mente.png" alt="mind" onclick="cambiarSeccion('15')">
                 </div>
                 <div id="cuerpoSel">
-                    <img src="img/prepara/cuerpo.png" alt="body" onclick="cambiodepantalla('prepara', 'preparaCuerpo1')">
+                    <img src="img/prepara/cuerpo.png" alt="body" onclick="cambiarSeccion('17')">
                 </div>
             </div>
         </div>
@@ -383,20 +384,20 @@
 
     <!-- ---------------------------------------------------------PREPARACIÓN MENTE--------------------------------------------------------- -->
 
-    <section id="preparaMente" class="none" style="background-color: white;">
-            <div class="backBtn" onclick="cambiodepantalla('preparaMente', 'prepara')"></div>
+    <section id="preparaMente" class="none" style="background-color: white;"> <!--15-->
+            <div class="backBtn" onclick="cambiarSeccion('14')"></div>
             <div class="divMeditar">
                 <img class="imgMeditar" src="img/prepara/meditar.png" alt="">
-                <div class="cuerpo2Right" onclick="cambiodepantalla('preparaMente', 'preparaMente2')"></div>
+                <div class="cuerpo2Right" onclick="cambiarSeccion('16')"></div>
             </div>
     </section>
 
-    <section id="preparaMente2" class="none">
-            <div class="backBtn" onclick="cambiodepantalla('preparaMente2', 'prepara')"></div>
+    <section id="preparaMente2" class="none"> <!--16-->
+            <div class="backBtn" onclick="cambiarSeccion('14')"></div>
             
             <div class="divMeditar">
                 <img class="imgMeditar" src="img/prepara/meditar2.png" alt="">
-                <div class="cuerpo2Left" onclick="cambiodepantalla('preparaMente2', 'preparaMente')"></div>
+                <div class="cuerpo2Left" onclick="cambiarSeccion('15')"></div>
             </div>
     </section>
 
@@ -404,28 +405,28 @@
 
     <!-- ---------------------------------------------------------PREPARACIÓN CUERPO--------------------------------------------------------- -->
 
-    <section id="preparaCuerpo1" class="none" style="background-color: white;">
-            <div class="backBtn" onclick="cambiodepantalla('preparaCuerpo1', 'prepara')"></div>
+    <section id="preparaCuerpo1" class="none" style="background-color: white;"> <!--17-->
+            <div class="backBtn" onclick="cambiarSeccion('14')"></div>
             <div class="divMeditar">
                 <img class="imgMeditar" src="img/prepara/Nueva carpeta/cambia.png" alt="">
-                <div class="cuerpo2Right" onclick="cambiodepantalla('preparaCuerpo1', 'preparaCuerpo2')"></div>
+                <div class="cuerpo2Right" onclick="cambiarSeccion('18')"></div>
             </div>
     </section>
 
-    <section id="preparaCuerpo2" class="none" style="background-color: white;">
-            <div class="backBtn" onclick="cambiodepantalla('preparaCuerpo2', 'prepara')"></div>
+    <section id="preparaCuerpo2" class="none" style="background-color: white;"> <!--18-->
+            <div class="backBtn" onclick="cambiarSeccion('14')"></div>
             <div class="divMeditar">
                 <img class="imgMeditar" src="img/prepara/Nueva carpeta/evita.png" alt="">
-                <div class="cuerpo2Right" onclick="cambiodepantalla('preparaCuerpo2', 'preparaCuerpo3')"></div>
-                <div class="cuerpo2Left" onclick="cambiodepantalla('preparaCuerpo2', 'preparaCuerpo1')"></div>
+                <div class="cuerpo2Right" onclick="cambiarSeccion('19')"></div>
+                <div class="cuerpo2Left" onclick="cambiarSeccion('17')"></div>
             </div>
     </section>
 
-    <section id="preparaCuerpo3" class="none" style="background-color: white;">
-            <div class="backBtn" onclick="cambiodepantalla('preparaCuerpo3', 'prepara')"></div>
+    <section id="preparaCuerpo3" class="none" style="background-color: white;"> <!--19-->
+            <div class="backBtn" onclick="cambiarSeccion('14')"></div>
             <div class="divMeditar">
                     <img class="imgMeditar" src="img/prepara/Nueva carpeta/tranquiliza.png" alt="">
-                    <div class="cuerpo2Left" onclick="cambiodepantalla('preparaCuerpo3', 'preparaCuerpo2')"></div>
+                    <div class="cuerpo2Left" onclick="cambiarSeccion('18')"></div>
                 </div>
     </section>
     <!-- ---------------------------------------------------------PREPARACIÓN CUERPO--------------------------------------------------------- -->
@@ -435,8 +436,8 @@
 
     <!-- ---------------------------------------------------------CREDITOS--------------------------------------------------------- -->
 
-    <section id="creditos" class="none" style="background-color: white;">
-        <div class="backBtn" onclick="cambiodepantalla('creditos', 'PantInicioUsuario')"></div>
+    <section id="creditos" class="none" style="background-color: white;"> <!--20-->
+        <div class="backBtn" onclick="cambiarSeccion('7')"></div>
         <div class="scrollable">
             <img src="img/creditos/creditos.png" alt="">
             <img src="img/creditos/creditos2.png" alt="">
@@ -445,8 +446,8 @@
     <!-- ---------------------------------------------------------CREDITOS--------------------------------------------------------- -->
 
     <!-- ---------------------------------------------------------PERFIL--------------------------------------------------------- -->
-    <section id="profile" class="none">
-            <div class="backBtn" onclick="cambiodepantalla('profile', 'PantInicioUsuario')"></div>
+    <section id="profile" class="none"> <!--21-->
+            <div class="backBtn" onclick="cambiarSeccion('7')"></div>
             <div id="perfil">
                 <img src="img/Perfil/pic.png" alt="">
                 <div class="container" >
