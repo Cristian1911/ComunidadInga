@@ -344,7 +344,7 @@ function revisarcupos(){
                 founduser = true;
             }
         }
-        console.log(founduser);
+        
         if(founduser == true){
             alert("ya estas inscrito");
         cambiodepantalla('DetalleEvento','PantallaAgendar');
@@ -389,7 +389,6 @@ function abonar(){
     });
     
     cuposDis--;
-    console.log(listaParticipantes);
     listaParticipantes[cuposDis] = Nombreuser;  
     var ref = firebase.database().ref('Eventos/'+departamento.value+"/"+Idevento);
     ref.update({
