@@ -7,6 +7,7 @@ var Nombreuser;
 var Nombre,Apellido;
 var Idevento,cuposDis,listaParticipantes,listaEventosuser=["0"];
 var founuser;
+var eventosUser, imprimireventos;
 
 
 function init(){
@@ -444,6 +445,31 @@ function crearEvento(){
 function noSection(id){
     document.getElementsByTagName('section')[0].setAttribute("class", "none");
     document.getElementById(id).classList.remove("none");
+}
+
+function perfil(){
+    cambiodepantalla('PantInicioUsuario','profile');
+    imprimireventos = document.getElementById('eventosPerfil');
+    imprimireventos.innerHTML = "";
+    var ref = firebase.database().ref('Usuarios/'+Nombreuser);
+    ref.once('value')
+       .then(function(snapshot) {
+        eventosUser = snapshot.child("lista").val();        
+        
+        for(var i = 1 ; i < eventosUser.length ;i+=2){
+            var ref1 = firebase.database().ref('Eventos/'+eventosUser[i]+"/"+eventosUser[i+1]);
+            ref1.once('value')
+                .then(function(snapshot) {
+                    
+                    imprimireventos.innerHTML += "<div class='card'> <div>"+snapshot.child('año').val()+"/"+snapshot.child('mes').val()+"/"+snapshot.child('dia').val()+" a las "+snapshot.child('hora').val()+" lugar: "+snapshot.child('lugar').val()+". Chaman a cargo: "+snapshot.child('Nombre').val()+"</div> </div> <br>";
+                  
+                });
+        }
+
+    });
+
+
+
 }
 
 
