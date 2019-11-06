@@ -296,11 +296,11 @@ function buscar(item,mesactual){
         
         if(item.innerHTML.length == 1){
             if(childData.dia === "0"+item.innerHTML && mesactual+1 === parseInt(childData.mes) ){
-                document.getElementById("listareventos").innerHTML += "<div onclick='showdetalleEvento(this)' id='evento."+key+"' >"+childData.Nombre+" Lugar: "+childData.lugar+"<br> Grupo :"+childData.cupos+" personas   Hora:"+childData.hora+"</div>";
+                document.getElementById("listareventos").innerHTML += "<div onclick='showdetalleEvento(this)' id='evento."+key+"' > <b>Chaman: </b>"+childData.Nombre+" <br> <b>Lugar: </b>"+childData.lugar+"<br> <b>Grupo: </b>"+childData.cupos+" personas <br> <b>Hora: </b>"+childData.hora+"</div>";
             }
         }else{
             if(childData.dia === item.innerHTML && mesactual+1 === parseInt(childData.mes) ){
-                document.getElementById("listareventos").innerHTML += "<div onclick='showdetalleEvento(this)' id='evento."+key+"' >"+childData.Nombre+" Lugar: "+childData.lugar+"<br> Grupo :"+childData.cupos+" personas   Hora:"+childData.hora+"</div>";
+                document.getElementById("listareventos").innerHTML += "<div onclick='showdetalleEvento(this)' id='evento."+key+"' > <b>"+childData.Nombre+"</b> <br> <b>Lugar: </b>"+childData.lugar+"<br> <b>Grupo: </b>"+childData.cupos+" personas <br> <b>Hora: </b>"+childData.hora+"</div>";
             }
         }
         

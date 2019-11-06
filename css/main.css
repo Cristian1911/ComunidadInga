@@ -192,6 +192,31 @@ body, html, section{
     background-repeat: no-repeat;
 }
 
+#agendaTitulo2{
+    background-image: url('../img/agendar/agendaTitulo2.png');
+    background-repeat: no-repeat;
+    text-align: center;
+    position: fixed;
+    height: 148px;
+    width: 100vh;
+    margin-top: 10vh;
+}
+
+#abonaTitulo{
+    background-image: url('../img/agendar/abonaTitulo.png');
+    background-repeat: no-repeat;
+}
+
+#textAbonar{
+    margin-left: 10vw;
+    margin-top: 20vh;
+}
+
+.bAbonar{
+    height: 3vh;
+    width: 40vw;
+}
+
 #exploraTitulo{
     background-image: url('../img/experiencia.png');
     background-repeat: no-repeat;
@@ -320,8 +345,87 @@ body, html, section{
     display: none;
 }
 
+/*------------------------------------------------------------------ DETALLE DE AGENDAR ------------------------------------------------------------------*/
+.leftDiv{
+    float: left;
+}
+
+.rightDiv{
+    float: right;
+}
+
+.centerDiv{
+    float: center;
+}
 
 #divDetalle{
     text-align: center;
     margin-top: 15vh;
 }
+
+.labelDetalle{
+    /*height: 5vh;
+    width: 50vw;
+    background-color: aquamarine;
+    border: 2px solid red;*/
+}
+
+#divDetalle1{
+    position: fixed;
+    height: 20vh;
+    width: 94vw;
+    margin-top: 20vh;
+}
+
+#divDetalle1Pic{
+    size: 10vh;
+    padding: 0px 10px;
+}
+
+#divDetalle1Info{
+    font-family: 'Open Sans', sans-serif;
+    float: center;
+    text-align: left;
+}
+
+#divDetalle2{
+    text-align: left;
+    position: absolute;
+    bottom: 35vh;
+}
+
+#divDetalle22{
+    margin-left: 15vw;
+}
+
+#divDetalle21{
+    margin-left: 5vw;
+}
+
+#detalleUbicacion{
+    text-align: center;
+    position: absolute;
+    bottom: 15vh;
+    width: 100vw;
+}
+
+#btnPagar{
+    height: 31px;
+    width: 100vw;
+    text-align: center;
+}
+
+#listareventos{
+    width: 100vw;
+    text-align: center;
+    margin-top: 35vh;
+    max-height: 56vh;
+    overflow: auto;
+}
+
+#listareventos div{
+    margin: 10px 0px; 
+    border: 1px solid gray;
+}
+
+/*------------------------------------------------------------------ DETALLE DE AGENDAR ------------------------------------------------------------------*/

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Muli|Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/calendar.css">
@@ -131,7 +132,7 @@
                 <ul id="menu">
                     <h3 onclick="noSection('PantInicioUsuario')"><li>Inicio</li></h3>
                     <h3 onclick="cambiodepantalla('PantInicioUsuario','profile')"><li>Perfil</li></h3>
-                    <h3><li>Dudas</li></h3>
+                   <!-- <h3><li>Dudas</li></h3> -->
                     <h3 onclick="cambiodepantalla('PantInicioUsuario','creditos')"><li>Sobre la aplicación</li></h3>
                 </ul>
             </div>
@@ -253,42 +254,64 @@
     </section>
 
     <section id="PantallaListarEventos" class="none">
+        <div id="backInicio1" class="backBtn" onclick="cambiodepantalla('PantallaListarEventos', 'PantallaAgendar')"></div>
+        <div id="agendaTitulo2"></div>
         <div id="listareventos">
 
         </div>
     </section>
 
     <section id="DetalleEvento" class="none">
+        <div id="backInicio1" class="backBtn" onclick="cambiodepantalla('DetalleEvento', 'PantallaListarEventos')"></div>
+        <div id="agendaTitulo2"></div>
         <div id="divDetalle">
-            <label id="DetalleENombre"></label><br><br>
-            <label id="DetalleEHora"></label><br><br>
-            <label id="DetalleELugar"></label><br><br>
-            <label id="DetalleEGrupo"></label><br><br>
-            <label id="DetalleECupos"></label><br><br>
-            <label id="DetalleEValor"></label><br><br>
-            <button onclick="revisarcupos()">Abona Tu cupo</button>
+            <div id="divDetalle1">
+                <div id="divDetalle1Pic" class="leftDiv">
+                    <img src="img/agendar/ppic1.png" alt="">
+                </div>
+                <div id="divDetalle1Info" class="centerDiv">
+                    <h5 id="DetalleENombre" class="labelDetalle"></h5>
+                    <b class="labelDetalle">Hora: </b><h id="DetalleEHora" class="labelDetalle"></h><br>
+                    <b class="labelDetalle">Lugar: </b><h id="DetalleELugar" class="labelDetalle"></h>
+                </div>
+                <hr>
+            </div>
+            <div id="divDetalle2">
+                <div id="divDetalle21" class="leftDiv">
+                    <b class="labelDetalle">Grupo: </b><label id="DetalleEGrupo" class="labelDetalle"></label><br>
+                    <b class="labelDetalle">Cupos disponibles: </b><label id="DetalleECupos" class="labelDetalle"></label>
+                </div>
+                <div id="divDetalle22" class="rightDiv">
+                    <b class="labelDetalle">Valor: $</b><label id="DetalleEValor" class="labelDetalle"></label><br>
+                    <div onclick="revisarcupos()" style="background-image: url('img/agendar/abona.png');height: 28px;width: 126px;"></div>
+                </div>
+                
+            </div>
 
         </div>
-
+        <div id="detalleUbicacion">
+            <img src="img/map.png" alt="">
+        </div>
     </section>
     <section id="pantallaAbonar" class="none">
+        <div id="backInicio1" class="backBtn" onclick="cambiodepantalla('pantallaAbonar', 'DetalleEvento')"></div>
+        <div id="abonaTitulo" class="title"></div>
+        <p id="textAbonar">Debes abonar el 20% del valor total de tu experiencia para reservar el cupo.</p>
         <div>
-            <label >Telefono :</label>
-            <input type="text" class="formRegistro">
-            <br>
+            <b class="bAbonar" style="padding-right: 15vw;">Telefono: </b> <input type="text" class="formRegistro"> <br>
 
-            <label id="valorApagar"></label>
+            <b class="bAbonar" style="padding-right: 25vw;">Valor: </b> <label id="valorApagar"></label> <br>
 
-            <label >Tarjeta :</label>
+            <b class="bAbonar" style="padding-right: 19vw;">Tarjeta: </b>
             <select name="tarjeta" id="Tarjeta">
                     <option value="Visa" selected>Visa</option>
                     <option value="MasterCard">MasterCard</option>
             </select>
+            <br>
 
-            <label >Numero :</label>
-            <input type="number" class="formRegistro">
+            <b class="bAbonar" style="padding-right: 16vw;">Numero: </b> <input type="number" class="formRegistro"><br>
 
-            <label >Expira :</label>
+            <b class="bAbonar" style="padding-right: 20vw;">Expira: </b>
             <select name="mes" id="mes">
                     <option value="01" selected>01</option>
                     <option value="02">02</option>
@@ -311,18 +334,19 @@
                     <option value="24"></option>
                     <option value="25"></option>
 
-            </select>
+            </select><br>
 
-            <label >Codigo seg. :</label>
-            <input type="password" class="formRegistro">
+            <b class="bAbonar" style="padding-right: 7.5vw;">Codigo seg. : </b> <input type="password" class="formRegistro">
 
-            <button onclick="toggle('enviarCorreo')">pagar</button>
+            <div id="btnPagar">
+                <img onclick="toggle('enviarCorreo')" src="img/agendar/pagar.png" alt="">
+            </div>
         </div>
-        <div id="enviarCorreo" class="none">
+        <div id="enviarCorreo" class="none" style="padding-top: 5vw; text-align: center;">
             <input id='EnviarCorreo' type="text" placeholder="correo">
             <button onclick="abonar()">enviar</button>
         </div>
-        <div id="VolverAlInicio" class="none">
+        <div id="VolverAlInicio" class="none" style="padding-top: 5vw; text-align: center;">
             <button onclick="findeagendar()">volver a la pagina principal</button>
         </div>
 
